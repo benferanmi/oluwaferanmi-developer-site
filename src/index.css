@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Alegreya:ital@1&family=Anton&family=Braah+One&display=swap');
+
+* {
+  padding: 0px;
+  margin: 0px;
+  color: white;
+  background-color: inherit;
+}
+
+p {
+  font-family: 400 16px/24px Macan,Helvetica Neue,Helvetica,Arial,sans-serif;
+}
+
