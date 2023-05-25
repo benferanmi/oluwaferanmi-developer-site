@@ -177,9 +177,17 @@
   width: 80%;
   margin: auto;
   padding-top: 30px;
-  font-size: 18px;
+  font-size: 20px;
 }
+@media screen and (max-width: 450px) {
+  .about p {
+    font-size: 15px;
+  }
+}
+
 @media screen and (max-width: 1060px) {
+
+
   .about {
     background-size: 62%;
   }
@@ -282,7 +290,8 @@
   border-radius: 50px;
   margin: 0 auto;
 }
-.works {
+
+.works-section {
   background: linear-gradient(
     90deg,
     #00002c,
@@ -291,75 +300,284 @@
     #000000,
     #000000
   );
-  padding-top: 20px;
-  padding-bottom: 20px;
+
+}
+.work-heading {
+  display: block;
+  text-align: center;
+  background-color: inherit;
+  margin-bottom: 40px;
+}
+
+.work-heading h1 {
+ font-family: "Anton", sans-serif;
+    font-size: 45px;
+    font-weight: 500;
+    color: white;
+    letter-spacing: normal;
+}
+
+.works {
+  width: 90%;
+  margin: auto;
   display: grid;
-  grid-template-columns: auto auto auto auto;
-  gap: 20px;
-  padding-left: 5%;
-  padding-right: 5%;
+  grid-template-columns: auto auto;
+  gap: 30px;
 }
-@media screen and (max-width: 1080px) {
-    .works {
-        grid-template-columns: auto auto auto;
-    }
-}
-@media screen and (max-width: 840px) {
-    .works {
-        grid-template-columns: auto auto;
-    }
-}
-@media screen and (max-width: 580px) {
-    .works {
-        grid-template-columns:  auto;
-    }
-    .work-main {
-        width: 70%;
-        margin: auto;
-    }
-}
-@media screen and (max-width: 440px) {
-    .works {
-        grid-template-columns:  auto;
-    }
-    .work-main {
-        width: 90%;
-        margin: auto;
-    }
-}
-
-
 
 .work-main {
-  display: flex;
-  flex-direction: column;
-  background: linear-gradient(180deg, rgb(76 76 76), rgb(0 0 0));
-  box-shadow: #13fbfe 0px 6px 8px 0px;
-  border-radius: 10px;
+  height: 600px;
+  width: 500px;
+  background-color: inherit;
+  border: 1px solid white;
+  position: relative;
+  padding: 10px 10px 10px 10px;
+  position: relative;
+  display: table;
 }
-.work-submain {
-  text-decoration: none;
-}
-.work-submain div {
-  width: 95%;
-  margin: auto;
-}
-.work-submain div h1 {
-  padding-top: 30px;
-  color: goldenrod;
-  font-size: 24px;
 
+.work-main:hover {
+  border: 1px solid rgb(255, 184, 4);
+  background-color: white;
+  
 }
-.work-main div p {
-  padding-top: 20px;
-  color: rgb(195, 195, 195);
-  font-size: 14px;
+
+.work-submain {
+  height: inherit;
+  width: inherit;
+  display: table;
 }
 
 .work-submain img {
-  height: 400px;
-
+  height: 580px;
   width: 100%;
   border-radius: 10px;
-  filter: opacity(0.8);
+}
+
+.work-submain div {
+  position: absolute;
+  bottom: 30.5px;
+  background-color: #000020;
+  width: 96%;
+  color: white;
+  opacity: 0;
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+.work-submain:hover div {
+  opacity: 1;
+  animation: bounceIn;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+.work-submain div button {
+  height: 35px;
+  width: 150px;
+  border-radius: 20px;
+  background-color: inherit;
+  border: 2px solid white;
+
+}
+
+a {
+  text-decoration: none;
+}
+
+.work-submain div h1,p {
+  color: white;
+}
+
+.work-submain div h1 {
+  font-size: 24px;
+  padding: 10px;
+}
+
+.work-submain div p {
+  font-size: 14px;
+  padding: 5px;
+}
+@media screen and (min-width: 1900px) and (max-width: 2560px) {
+    .work-heading {
+      margin-bottom: 50px;
+    }
+    
+    .work-heading h1 {
+        font-size: 80px;
+    }
+    
+    .works {
+      width: 90%;
+      margin: auto;
+      display: grid;
+      grid-template-columns: auto auto auto auto;
+      gap: 25px;
+    }
+    
+    .work-main {
+      height: 650px;
+      width: 100%;
+      max-width: auto;
+      background-color: inherit;
+      border: 1px solid white;
+      position: relative;
+    }
+    .work-submain div h1 {
+      font-size: 34px;
+    }
+    .work-submain div p {
+      font-size: 24px;
+    }
+    .work-submain img {
+      height: 640px;
+    }  
+}
+@media screen and (max-width: 1024px) {
+    .work-heading {
+      margin-bottom: 50px;
+    }
+    
+    .work-heading h1 {
+        font-size: 50px;
+    }
+    
+    .works {
+      width: 90%;
+      margin: auto;
+      display: grid;
+      grid-template-columns: auto auto;
+      gap: 25px;
+    }
+    
+    .work-main {
+      height: 550px;
+      width: 100%;
+      max-width: auto;
+      background-color: inherit;
+      border: 1px solid white;
+      position: relative;
+    }
+    .work-submain div h1 {
+      font-size: 24px;
+    }
+    .work-submain div p {
+      font-size: 18px;
+    }
+    .work-submain img {
+      height: 540px;
+    }  
+}
+
+@media screen and (max-width: 768px) {
+    .work-heading {
+      margin-bottom: 40px;
+    }
+    
+    .work-heading h1 {
+        font-size: 45px;
+    }
+    
+    .works {
+      width: 90%;
+      margin: auto;
+      display: grid;
+      grid-template-columns: auto auto;
+      gap: 15px;
+    }
+    
+    .work-main {
+      height: 450px;
+      width: 100%;
+      max-width: auto;
+      background-color: inherit;
+      border: 1px solid white;
+      position: relative;
+    }
+    .work-submain div h1 {
+      font-size: 24px;
+    }
+    .work-submain div p {
+      font-size: 16px;
+    }
+    .work-submain img {
+      height: 440px;
+      width: 100%;
+      border-radius: 10px;
+    }
+    
+}
+@media screen and (max-width: 450px) {
+.work-heading {
+  margin-bottom: 20px;
+}
+
+.work-heading h1 {
+    font-size: 35px;
+}
+
+.works {
+  width: 90%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: auto;
+  gap: 20px;
+}
+
+.work-main {
+  height: 450px;
+  width: 100%;
+  max-width: auto;
+  background-color: inherit;
+  border: 1px solid white;
+  position: relative;
+  padding: 10px 10px 10px 10px;
+  position: relative;
+  display: table;
+}
+.work-submain div h1 {
+  font-size: 20px;
+}
+.work-submain div p {
+  font-size: 14px;
+}
+.work-submain img {
+  height: 440px;
+  width: 100%;
+  border-radius: 10px;
+}
+
+}
+
+@media screen and (max-width: 320px) {
+.works {
+  width: 92%;
+  gap: 20px;
+}
+
+.work-main {
+  height: 450px;
+}
+.work-submain div h1 {
+  font-size: 20px;
+}
+.work-submain div p {
+  font-size: 14px;
+}
+.work-submain img {
+  height: 440px;
+}
+}
+
+@keyframes bounceIn{
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }

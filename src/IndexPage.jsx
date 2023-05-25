@@ -2,13 +2,15 @@ import "./css/style.css";
 import img from "./assets/gif 2.gif";
 import { Link } from "react-router-dom";
 import NavBar from "./components/NavBar.jsx";
-import Skill from "./data/SkillData.jsx";
+// import Skill from "./data/SkillData.jsx";
 import { useState } from "react";
-import ProgressBar from "@ramonak/react-progress-bar";
+// import ProgressBar from "@ramonak/react-progress-bar";
 import Work from "./data/WorkData.jsx";
+import SkillProgressBar from "./components/SkillProgerssBar";
+import Footer from "./components/Footer";
 
 const IndexPage = () => {
-  const [skill] = useState(Skill);
+  // const [skill] = useState(Skill);
   const [work] = useState(Work);
 
   return (
@@ -73,39 +75,43 @@ const IndexPage = () => {
       </div>
 
       <div className="skill">
-        <div className="skill-grid">
-          {skill?.map((skills) => (
-            <div key={skills.id}>
-              <p className="skill-title">{skills.skillName}</p>
-              <span className="progress-bar">
-                <ProgressBar
-                  completed={skills.progress}
-                  bgColor={"linear-gradient(90deg, #00002c, #13fefb)"}
-                  height="36px"
-                  margin="2px"
-                  baseBgColor="inherit"
-                />
-              </span>
-            </div>
-          ))}
-        </div>
+            <SkillProgressBar />
       </div>
 
-      <div className="works">
+      {/* i will apply pagination to this section in the later future. */}
+
+      <div className="works-section">
+        <div className="work-heading">
+          <h1>
+            Previous Works
+          </h1>
+        </div>
+        <span></span>
+        <span></span>
+        <div className="works">
         {work?.map((works) => (
           <div key={works.workName} className="work-main">
             <a href={works.projectLInk} className="work-submain">
-              <img src={works.image} alt={works.workName} className={works.wStyle} />
+              <img
+                src={works.image}
+                alt={works.workName}
+                className={works.wStyle}
+              />
               <div>
-              <h1>{works.workName}</h1>
-              <p>Languages: {works.languages}</p>
-              <p>Features: {works.features}</p>
-              <p>{works.codeLink}</p>
+                <h1>{works.workName}</h1>
+                <p>Languages: {works.languages}</p>
+                <p>Features: {works.features}</p>
+                <p>{works.codeLink}</p>
+                <br />
+                <button><a href={works.projectLInk}>View Project</a></button>
               </div>
             </a>
           </div>
         ))}
+        </div>
       </div>
+
+      <Footer />
     </div>
   );
 };
