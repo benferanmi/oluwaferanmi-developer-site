@@ -15,7 +15,7 @@ const Portfolio = () => {
                 <div className="u-container-align-left u-container-style u-expanded-width u-group u-opacity u-opacity-60 u-palette-1-dark-3 u-group-1">
                   <div className="u-container-layout u-valign-middle u-container-layout-2 background-faint">
                     <h6 className="u-align-left u-text u-text-default u-text-2"> Coaching/ Ecommerce Website</h6>
-                    <button className="u-align-left u-text u-text-default u-text-3"> <a className="button-me" href="https://sledgelifecoaching.com/">View Site</a></button>
+                    <button className="u-align-left u-text u-text-default u-text-3"> <a className="button-me" target="_black" href="https://sledgelifecoaching.com/">View Site</a></button>
                   </div>
                 </div>
               </div>
@@ -25,7 +25,7 @@ const Portfolio = () => {
                 <div className="u-container-align-left u-container-style u-expanded-width u-group u-opacity u-opacity-60 u-palette-1-dark-3 u-group-2">
                   <div className="u-container-layout u-valign-middle u-container-layout-4 background-faint">
                     <h6 className="u-align-left u-text u-text-default u-text-4"> Notary Website</h6>
-                    <button  className="u-align-left u-text u-text-default u-text-5"><a className="button-me" href="www.nadaiapparel.com/"> View Site</a></button>
+                    <button  className="u-align-left u-text u-text-default u-text-5"><a className="button-me" target="_black" href="http://www.nadaiapparel.com/"> View Site</a></button>
                   </div>
                 </div>
               </div>
@@ -35,7 +35,7 @@ const Portfolio = () => {
                 <div className="u-container-align-left u-container-style u-expanded-width u-group u-opacity u-opacity-60 u-palette-1-dark-3 u-group-3">
                   <div className="u-container-layout u-valign-middle u-container-layout-6 background-faint">
                     <h6 className="u-align-left u-text u-text-default u-text-6">Personal/ Ecommerce Website</h6>
-                    <button className="u-align-left u-text u-text-default u-text-3"> <a className="button-me" href="https://www.delcerose24.com/">View Site</a></button>
+                    <button className="u-align-left u-text u-text-default u-text-3"> <a className="button-me" target="_black" href="https://www.delcerose24.com/">View Site</a></button>
                   </div>
                 </div>
               </div>
@@ -47,7 +47,7 @@ const Portfolio = () => {
                     <h6 className="u-align-left u-text u-text-default u-text-8">Donation Website. </h6>
                     <h3 className="u-align-left u-text u-text-default u-text-9">A front end project of a donation website pages. 
                     </h3>
-                    <button  className="u-align-left u-text u-text-default u-text-3"><a className="button-me" href="https://donation-website.vercel.app/"> View Site</a></button>
+                    <button  className="u-align-left u-text u-text-default u-text-3"><a className="button-me" href="https://donation-website.vercel.app/" target="_black" > View Site</a></button>
                   </div>
                 </div>
               </div>
