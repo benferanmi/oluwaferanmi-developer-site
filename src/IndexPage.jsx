@@ -2,17 +2,11 @@ import "./css/style.css";
 import img from "./assets/gif 2.gif";
 import { Link } from "react-router-dom";
 import NavBar from "./components/NavBar.jsx";
-// import Skill from "./data/SkillData.jsx";
-import { useState } from "react";
-// import ProgressBar from "@ramonak/react-progress-bar";
-import Work from "./data/WorkData.jsx";
 import SkillProgressBar from "./components/SkillProgerssBar";
 import Footer from "./components/Footer";
+import Portfolio from "./Portfolio";
 
 const IndexPage = () => {
-  // const [skill] = useState(Skill);
-  const [work] = useState(Work);
-
   return (
     <div>
       <div className="header-bg">
@@ -75,42 +69,21 @@ const IndexPage = () => {
       </div>
 
       <div className="skill">
-            <SkillProgressBar />
+        <SkillProgressBar />
       </div>
 
       {/* i will apply pagination to this section in the later future. */}
 
       <div className="works-section">
         <div className="work-heading">
-          <h1>
-            Previous Works
-          </h1>
+          <h1>Previous Works</h1>
         </div>
         <span></span>
-        <span></span>
-        <div className="works">
-        {work?.map((works) => (
-          <div key={works.workName} className="work-main">
-            <a href={works.projectLInk} className="work-submain">
-              <img
-                src={works.image}
-                alt={works.workName}
-                className={works.wStyle}
-              />
-              <div>
-                <h1>{works.workName}</h1>
-                <p>Languages: {works.languages}</p>
-                <p>Features: {works.features}</p>
-                <p>{works.codeLink}</p>
-                <br />
-                <button><a href={works.projectLInk}>View Project</a></button>
-              </div>
-            </a>
-          </div>
-        ))}
-        </div>
+        <div className="portfolios">
+        <Portfolio />
       </div>
-
+      </div>
+      
       <Footer />
     </div>
   );

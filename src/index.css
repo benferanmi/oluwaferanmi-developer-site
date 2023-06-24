@@ -13,3 +13,18 @@ p {
   font-family: 400 16px/24px Macan,Helvetica Neue,Helvetica,Arial,sans-serif;
 }
 
+.bounce-animation {
+  animation-name: bounce;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}

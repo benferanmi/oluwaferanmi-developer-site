@@ -22,7 +22,7 @@ const Work = [
         wStyle: 'style3',
     },
     {
-        workName: 'Personal/Business Website',
+        workName: 'Personal/Business1 Website',
         image: delce,
         languages: 'Built With Wordpress CMS, html, jquery and php',
         features: 'Ecommerce, Payment Gateway,  Online Store ',

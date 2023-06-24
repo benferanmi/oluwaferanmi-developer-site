@@ -73,6 +73,17 @@
 .head-name {
   font-size: 40px;
 }
+
+
+@media screen and (max-width: 500px) {
+  .head-greeting {
+    padding-bottom: 30px;
+  }
+  .head-name {
+    font-size: 35px;
+    text-align: center;
+  }
+}
 .head-dis {
   padding-top: 15%;
   font-size: 18px;
@@ -121,7 +132,8 @@
     background: url("../assets/gif 2.gif");
     background-size: 100%;
     background-repeat: no-repeat;
-    background-position: center;
+    background-position-x: center;
+    background-position-y: 250px;
   }
   .right {
     display: none;
@@ -132,8 +144,9 @@
   }
 
   .head-dis {
-    padding-top: 31%;
+    padding-top: 16%;
     margin-top: 100px;
+    text-align: center ;
   }
   .head-button {
     margin-top: 40px;
@@ -181,7 +194,7 @@
 }
 @media screen and (max-width: 450px) {
   .about p {
-    font-size: 15px;
+    font-size: 18px;
   }
 }
 
@@ -217,7 +230,7 @@
 
 @media screen and (max-width: 460px) {
   .about {
-    height: 500px;
+    height: fit-content;
     background-size: 100%;
   }
 }
@@ -317,60 +330,36 @@
     letter-spacing: normal;
 }
 
-.works {
-  width: 90%;
-  margin: auto;
-  display: grid;
-  grid-template-columns: auto auto;
-  gap: 30px;
-}
-
-.work-main {
-  height: 600px;
-  width: 500px;
-  background-color: inherit;
-  border: 1px solid white;
-  position: relative;
-  padding: 10px 10px 10px 10px;
-  position: relative;
-  display: table;
-}
-
-.work-main:hover {
-  border: 1px solid rgb(255, 184, 4);
-  background-color: white;
+@media screen and (max-width: 768px ) {
   
-}
-
-.work-submain {
-  height: inherit;
-  width: inherit;
-  display: table;
-}
-
-.work-submain img {
-  height: 580px;
-  width: 100%;
-  border-radius: 10px;
-}
-
 .work-submain div {
   position: absolute;
   bottom: 30.5px;
   background-color: #000020;
   width: 96%;
   color: white;
-  opacity: 0;
-  padding-bottom: 10px;
-  text-align: center;
-}
-
-.work-submain:hover div {
   opacity: 1;
   animation: bounceIn;
   animation-duration: 1s;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+.work-submain div .hidden {
+  display: none;
+  visibility: hidden;
+}
+
+.work-submain div h1 {
+  font-size: 20px
+
+}
+.work-submain div p {
+  font-size: 12px;
+}
+
 }
 
 .work-submain div button {
@@ -379,6 +368,7 @@
   border-radius: 20px;
   background-color: inherit;
   border: 2px solid white;
+  color: white;
 
 }
 
@@ -406,33 +396,7 @@ a {
     
     .work-heading h1 {
         font-size: 80px;
-    }
-    
-    .works {
-      width: 90%;
-      margin: auto;
-      display: grid;
-      grid-template-columns: auto auto auto auto;
-      gap: 25px;
-    }
-    
-    .work-main {
-      height: 650px;
-      width: 100%;
-      max-width: auto;
-      background-color: inherit;
-      border: 1px solid white;
-      position: relative;
-    }
-    .work-submain div h1 {
-      font-size: 34px;
-    }
-    .work-submain div p {
-      font-size: 24px;
-    }
-    .work-submain img {
-      height: 640px;
-    }  
+    } 
 }
 @media screen and (max-width: 1024px) {
     .work-heading {
@@ -441,33 +405,7 @@ a {
     
     .work-heading h1 {
         font-size: 50px;
-    }
-    
-    .works {
-      width: 90%;
-      margin: auto;
-      display: grid;
-      grid-template-columns: auto auto;
-      gap: 25px;
-    }
-    
-    .work-main {
-      height: 550px;
-      width: 100%;
-      max-width: auto;
-      background-color: inherit;
-      border: 1px solid white;
-      position: relative;
-    }
-    .work-submain div h1 {
-      font-size: 24px;
-    }
-    .work-submain div p {
-      font-size: 18px;
-    }
-    .work-submain img {
-      height: 540px;
-    }  
+    } 
 }
 
 @media screen and (max-width: 768px) {
@@ -479,34 +417,6 @@ a {
         font-size: 45px;
     }
     
-    .works {
-      width: 90%;
-      margin: auto;
-      display: grid;
-      grid-template-columns: auto auto;
-      gap: 15px;
-    }
-    
-    .work-main {
-      height: 450px;
-      width: 100%;
-      max-width: auto;
-      background-color: inherit;
-      border: 1px solid white;
-      position: relative;
-    }
-    .work-submain div h1 {
-      font-size: 24px;
-    }
-    .work-submain div p {
-      font-size: 16px;
-    }
-    .work-submain img {
-      height: 440px;
-      width: 100%;
-      border-radius: 10px;
-    }
-    
 }
 @media screen and (max-width: 450px) {
 .work-heading {
@@ -516,60 +426,12 @@ a {
 .work-heading h1 {
     font-size: 35px;
 }
+}
 
-.works {
-  width: 90%;
+.portfolios {
+  width: 90%; 
   margin: auto;
-  display: grid;
-  grid-template-columns: auto;
-  gap: 20px;
 }
-
-.work-main {
-  height: 450px;
-  width: 100%;
-  max-width: auto;
-  background-color: inherit;
-  border: 1px solid white;
-  position: relative;
-  padding: 10px 10px 10px 10px;
-  position: relative;
-  display: table;
-}
-.work-submain div h1 {
-  font-size: 20px;
-}
-.work-submain div p {
-  font-size: 14px;
-}
-.work-submain img {
-  height: 440px;
-  width: 100%;
-  border-radius: 10px;
-}
-
-}
-
-@media screen and (max-width: 320px) {
-.works {
-  width: 92%;
-  gap: 20px;
-}
-
-.work-main {
-  height: 450px;
-}
-.work-submain div h1 {
-  font-size: 20px;
-}
-.work-submain div p {
-  font-size: 14px;
-}
-.work-submain img {
-  height: 440px;
-}
-}
-
 @keyframes bounceIn{
   0% {
     transform: translateY(0);

@@ -231,6 +231,10 @@ hr {
 }
 
 @media screen and (max-width: 600px) {
+    input {
+        margin-top: 5px !important;
+        margin-bottom: 0 !important;
+    }
     .footer {
         padding-top: 30px; 
     }
