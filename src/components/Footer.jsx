@@ -49,7 +49,7 @@ const Footer = () => {
           <p>+234 8125291401</p>
         </div>
 
-        <div>
+        <a href = "mailto: benferanmiopafunso@gmail.com">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -66,7 +66,7 @@ const Footer = () => {
           </svg>
 
           <p>benferanmiopafunso@gmaill.com</p>
-        </div>
+        </a>
 
         <div>
           <svg
