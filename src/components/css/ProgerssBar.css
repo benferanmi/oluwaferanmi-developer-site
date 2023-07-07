@@ -146,7 +146,44 @@
   &.progress-95 .pie .left-side {
     transform: rotate(342deg);
   }
+  &.progress-99 .pie .left-side {
+    transform: rotate(1deg);
+  }
+  &.progress-99 .pie .half-circle {
+    border-color: #ffffff;
+  }
+
 }
+
+.skill-other {
+  width: 100%;
+  background: inherit;
+}
+
+.skill-other div {
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+  margin: auto;
+  margin-bottom: 30px;
+  background: inherit;
+  flex-direction: column;
+}
+
+.skill-other div  h1{
+  font-size: 30px;
+}
+
+.skill-other div ol {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  letter-spacing: 1.5;
+
+}
+
 @media screen and (min-width: 1900px) and (max-width: 2560px) {
   @media  screen and (max-width: 768px) {
     :root {
@@ -257,6 +294,19 @@
     color: #bdc3c7;
   }
 }
+
+.skill-other div {
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  background: inherit;
+  flex-direction: column;
+  margin: auto;
+}
+
 }
 
 @media screen and (max-width: 375px) {
@@ -304,4 +354,18 @@
   }
 
 }
+
+
+.skill-other div {
+  width: 80%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  background: inherit;
+  flex-direction: column;
+}
+
 }

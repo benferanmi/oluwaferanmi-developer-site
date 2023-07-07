@@ -75,7 +75,7 @@ h1 {
 }
 input {
   height: 30px;
-  color: black;
+  color: black !important;
   background-color: white;
   border: 1px solid white;
   border-radius: 15px;
@@ -98,7 +98,7 @@ textarea {
     border-radius: 10px;
     outline: none;
     background-color: white ;
-    color: black;
+    color: black !important;
     resize: none;
     width: 100%;
     padding: 10px;

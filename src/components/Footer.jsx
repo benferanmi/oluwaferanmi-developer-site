@@ -5,6 +5,11 @@ import emailjs from "@emailjs/browser";
 
 const Footer = () => {
   const form = useRef();
+
+  // const [lastName, setLastName] = useState("");
+  // const [firstName, setFirstName] = useState("");
+  // const [email, setEmail] = useState("");
+
   console.log(form);
   const sendEmail = (e) => {
     e.preventDefault();
@@ -28,7 +33,7 @@ const Footer = () => {
 
   return (
     <div className="footer">
-        <div className='hor-line'></div>
+      <div className="hor-line"></div>
       <div className="contact-info">
         <div>
           <svg
@@ -49,7 +54,7 @@ const Footer = () => {
           <p>+234 8125291401</p>
         </div>
 
-        <a href = "mailto: benferanmiopafunso@gmail.com">
+        <a href="mailto: benferanmiopafunso@gmail.com">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -110,15 +115,23 @@ const Footer = () => {
                 type="text"
                 placeholder="First Name"
                 name="first-name"
+                // value={firstName}
+                // onChange={(e) => setFirstName(e.target.value)}
                 required
               />
 
-              <input type="text" placeholder="Last Name" name="last name" />
+              <input
+                type="text"
+                placeholder="Last Name"
+                name="last name"
+                // value={lastName} onChange={(e) => setLastName(e.target.value) }
+              />
 
               <input
                 type="email"
                 name="email"
                 placeholder="enter your email"
+                // value={email} onChange={(e) => setEmail(e.target.value) }
                 required
               />
 
@@ -128,7 +141,7 @@ const Footer = () => {
                 placeholder="Enter your discription here."
               ></textarea>
 
-              <button type="submit"> Send Email.</button>
+              <button type="submit">Send Email.</button>
             </form>
           </div>
         </div>
