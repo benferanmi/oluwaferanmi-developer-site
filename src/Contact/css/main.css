@@ -1,0 +1,15 @@
+.contact, .nav-bg {
+    background: linear-gradient( 90deg, #00002c, #00001a, #000000, #000000, #000000 ) !important;
+}
+
+.white {
+    background: white !important;
+}
+
+.p-10 {
+padding: 10px !important;
+}
+
+.inherit {
+    background: inherit;
+}

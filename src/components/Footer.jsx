@@ -10,7 +10,7 @@ const Footer = () => {
   // const [firstName, setFirstName] = useState("");
   // const [email, setEmail] = useState("");
 
-  console.log(form);
+  // console.log(form);
   const sendEmail = (e) => {
     e.preventDefault();
 
@@ -123,7 +123,7 @@ const Footer = () => {
               <input
                 type="text"
                 placeholder="Last Name"
-                name="last name"
+                name="last-name"
                 // value={lastName} onChange={(e) => setLastName(e.target.value) }
               />
 

@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import PropTypes from 'prop-types';
 
-function NavBar() {
+function NavBar({scrollToSection, workRef}) {
   const [windowSize, setwindowSize] = useState(window.innerWidth);
   console.log(windowSize);
 
@@ -41,10 +42,21 @@ function NavBar() {
     <div className="nav">
       <Link to="/">Home</Link>
       <Link to="/contact">Contact</Link>
-      <Link to="/works">Previous Works</Link>
+      <Link onClick={() => scrollToSection(workRef)} >Previous Works</Link>
       <Link to="/blogs">Blogs</Link>
+      <a href='http://www.seobrandstudio.it' target='blank_'>Seo Page</a>
     </div>
   );
 }
+
+NavBar.propTypes = {
+  // prop validation for App component
+  // Make sure scrollToSection is a function
+  scrollToSection: PropTypes.func.isRequired,
+  // Make sure section1Ref, section2Ref, and section3Ref are React refs
+  workRef: PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
+  // section2Ref: PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
+  // section3Ref: PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
+};
 
 export default NavBar;

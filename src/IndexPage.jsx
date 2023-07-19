@@ -5,13 +5,57 @@ import NavBar from "./components/NavBar.jsx";
 import SkillProgressBar from "./components/SkillProgerssBar";
 import Footer from "./components/Footer";
 import Portfolio from "./Portfolio";
+import { useRef } from "react";
+import { Helmet } from "react-helmet";
 
 const IndexPage = () => {
+  const workRef = useRef(null);
+
+  const scrollToSection = (ref) => {
+    if (ref.current) {
+      ref.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
   return (
     <div>
+      <Helmet>
+        <meta name="author" content="Opafunso Benjamin Feranmi" />
+        <meta
+          name="keywords"
+          content="react, frontend, developer, web development, html, css, tailwind, next, mongodb, full stack, benferanmi, foworg"
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Benjamin Feranmi Portfolio</title>
+        <meta
+          name="description"
+          content=" As a website developer, I specialize in crafting custom websites
+              that are not only visually stunning, but also highly functional
+              and intuitive. From the initial design concept to the final
+              product launch, I work closely with my clients to ensure that
+              their website meets their unique needs and goals."
+        />
+        <meta
+          property="og:title"
+          content="Benjamin feranmi portfolio website "
+        />
+        <meta
+          property="og:description"
+          content="As a website developer, I specialize in crafting custom websites
+              that are not only visually stunning, but also highly functional
+              and intuitive. From the initial design concept to the final
+              product launch, I work closely with my clients to ensure that
+              their website meets their unique needs and goals."
+        />
+        <meta property="og:image" content="" />
+        <meta
+          property="og:url"
+          content="https://oluwaferanmi-developer-site.vercel.app/"
+        />
+        <meta property="og:type" content="website" />
+      </Helmet>
       <div className="header-bg">
         {}
-        <NavBar />
+        <NavBar scrollToSection={scrollToSection} workRef={workRef} />
         <span className="header">
           <div className="left">
             <p className="head-greeting">HELLO,</p>
@@ -79,11 +123,11 @@ const IndexPage = () => {
           <h1>Previous Works</h1>
         </div>
         <span></span>
-        <div className="portfolios">
-        <Portfolio />
+        <div className="portfolios" ref={workRef}>
+          <Portfolio />
+        </div>
       </div>
-      </div>
-      
+
       <Footer />
     </div>
   );
