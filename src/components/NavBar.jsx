@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 function NavBar({scrollToSection, workRef}) {
   const [windowSize, setwindowSize] = useState(window.innerWidth);
+  const [isClicked, setIsClicked] = useState(false);
   console.log(windowSize);
 
   useEffect(() => {
@@ -15,9 +16,19 @@ function NavBar({scrollToSection, workRef}) {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  function handleClick(e) {
+    e.preventDefault();
+    if (isClicked) {
+      setIsClicked(false)
+    } else (
+      setIsClicked(true)
+    )
+  }
+
   if (windowSize <= "650") {
     return (
-      <div className="menu">
+      <div>
+        <div className="menu" onClick={handleClick}>
         <span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -34,6 +45,17 @@ function NavBar({scrollToSection, workRef}) {
             />
           </svg>
         </span>
+      </div>
+
+      <div>
+      {isClicked && <div className="nav-row">
+      <Link to="/">Home</Link>
+      <Link to="/contact">Contact</Link>
+      <Link onClick={() => scrollToSection(workRef)} >Previous Works</Link>
+      <Link to="/blogs">Blogs</Link>
+      <a href='http://www.seobrandstudio.it' target='blank_'>Seo Page</a>
+    </div>}
+      </div>
       </div>
     );
   }

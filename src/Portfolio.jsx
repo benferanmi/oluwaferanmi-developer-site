@@ -4,7 +4,7 @@ import "./portfolio/nicepagemail.css";
 const Portfolio = () => {
   return (
     <>
-      <body className="u-body u-xl-mode" data-lang="en">
+      <body className="ben-body ben-xl-mode" data-lang="en">
         <section
           className="u-clearfix u-container-align-left u-section-1"
           id="sec-0a4c"

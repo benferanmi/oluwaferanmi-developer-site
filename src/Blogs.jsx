@@ -1,8 +1,14 @@
-export default function Blogs() {
+import './css/style.css'
+import {Link} from 'react-router-dom'
+const Blog = () => {
 
     return (
-        <div>
-            This Page is coming Soon
+        <div className="blog">
+            <div> This Page is coming Soon</div>
+            
+            <Link to="/"> Back to Home </Link>
         </div>
     )
 }
+
+export default Blog

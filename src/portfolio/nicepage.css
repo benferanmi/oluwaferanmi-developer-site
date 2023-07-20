@@ -25,6 +25,7 @@
       rgba(0, 0, 0, 0.25)
     ),
     url("https://res.cloudinary.com/benferanmi/image/upload/v1687635260/portfolio/sledge_v5x1f2.png");
+  border-radius: 20px;
   background-position: 50% 50%;
   height: 400px;
 }
@@ -35,6 +36,7 @@
       rgba(0, 0, 0, 0.25)
     ),
     url("https://res.cloudinary.com/benferanmi/image/upload/v1688499695/screencapture-gulfair-2023-07-04-20_31_35_xqm1tw.png");
+  border-radius: 20px;
   background-position: 50% 50%;
   height: 400px;
 }
@@ -46,7 +48,8 @@
       rgba(0, 0, 0, 0.25),
       rgba(0, 0, 0, 0.25)
     ),
-    url("https://res.cloudinary.com/benferanmi/image/upload/v1688499629/screencapture-travelup-en-gb-2023-07-04-20_30_30_ixdsbv.png");
+    url("../assets/portfolio/travelup.png");
+  border-radius: 20px;
   background-position: 50% 50%;
 }
 .u-section-1 .u-image-c1 {
@@ -56,7 +59,8 @@
       rgba(0, 0, 0, 0.25),
       rgba(0, 0, 0, 0.25)
     ),
-    url("https://res.cloudinary.com/benferanmi/image/upload/v1688733018/screencapture-fshealth-2023-07-07-12_57_31_kz3phe.png");
+    url("../assets/portfolio/fshealth.png");
+  border-radius: 20px;
   background-position: 50% 50%;
 }
 .u-section-1 .u-container-layout-1 {
@@ -89,7 +93,8 @@
       rgba(0, 0, 0, 0.25),
       rgba(0, 0, 0, 0.25)
     ),
-    url("https://res.cloudinary.com/benferanmi/image/upload/v1687635257/portfolio/nadal_n4hlpa.png");
+    url("../assets/portfolio/nadal.png");
+  border-radius: 20px;
   background-position: 50% 50%;
   height: 400px;
 }
@@ -124,7 +129,8 @@
       rgba(0, 0, 0, 0.25),
       rgba(0, 0, 0, 0.25)
     ),
-    url("https://res.cloudinary.com/benferanmi/image/upload/v1687635237/delce_xkeyve.png");
+    url("../assets/portfolio/delce.png");
+  border-radius: 20px;
   background-position: 50% 50%;
   height: 400px;
 }
@@ -159,7 +165,8 @@
       rgba(0, 0, 0, 0.25),
       rgba(0, 0, 0, 0.25)
     ),
-    url("https://res.cloudinary.com/benferanmi/image/upload/v1688733384/screencapture-delcerose24-2023-07-07-13_35_30_kqp1pa.png");
+    url("../assets/portfolio/donation.png");
+  border-radius: 20px;
   height: 400px;
 
   background-position: 50% 50%;
@@ -195,7 +202,8 @@
       rgba(0, 0, 0, 0.25),
       rgba(0, 0, 0, 0.25)
     ),
-    url("https://res.cloudinary.com/benferanmi/image/upload/v1687727236/screencapture-pharmacywebsite-vercel-app-2023-06-25-22_02_43_tzoabf.png");
+    url("../assets/portfolio/pharmacy.png");
+  border-radius: 20px;
   background-position: 50% 50%;
   height: 400px;
 }
@@ -231,6 +239,7 @@
       rgba(0, 0, 0, 0.25)
     ),
     url("//images01.nicepagecdn.com/c461c07a441a5d220e8feb1a/8c593f782d1654b09c0aa7b3/jhjh688.jpg");
+  border-radius: 20px;
   background-position: 50% 50%;
   height: 400px;
 }
