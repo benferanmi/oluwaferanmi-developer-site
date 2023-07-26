@@ -24,7 +24,7 @@ const Portfolio = () => {
                           {" "}
                           Air Flight Booking Website{" "}
                         </h6>
-                        <button className="u-align-left u-text u-text-default u-text-3">
+                        <button className="u-align-left u-text u-text-default u-text-3 buttons-me">
                           {" "}
                           <a
                             className="button-me"
@@ -50,7 +50,7 @@ const Portfolio = () => {
                           {" "}
                           Transportation Booking Website
                         </h6>
-                        <button className="u-align-left u-text u-text-default u-text-3">
+                        <button className="u-align-left u-text u-text-default u-text-3 buttons-me">
                           {" "}
                           <a
                             className="button-me"
@@ -76,7 +76,7 @@ const Portfolio = () => {
                           {" "}
                           Telemedicine/Health Website.
                         </h6>
-                        <button className="u-align-left u-text u-text-default u-text-3">
+                        <button className="u-align-left u-text u-text-default u-text-3 buttons-me">
                           {" "}
                           <a
                             className="button-me"
@@ -103,7 +103,7 @@ const Portfolio = () => {
                           {" "}
                           Coaching/ Ecommerce Website
                         </h6>
-                        <button className="u-align-left u-text u-text-default u-text-3">
+                        <button className="u-align-left u-text u-text-default u-text-3 buttons-me">
                           {" "}
                           <a
                             className="button-me"
@@ -154,7 +154,7 @@ const Portfolio = () => {
                         <h6 className="u-align-left bg-none u-text u-text-default u-text-6">
                           Personal/ Ecommerce Website
                         </h6>
-                        <button className="u-align-left u-text u-text-default u-text-3">
+                        <button className="u-align-left u-text u-text-default u-text-3 buttons-me">
                           {" "}
                           <a
                             className="button-me"
@@ -182,7 +182,7 @@ const Portfolio = () => {
                         <h3 className="u-align-left bg-none u-text u-text-default u-text-9">
                           A front end project of a donation website pages.
                         </h3>
-                        <button className="u-align-left u-text u-text-default u-text-3">
+                        <button className="u-align-left u-text u-text-default u-text-3 buttons-me">
                           <a
                             className="button-me"
                             href="https://donation-website.vercel.app/"
@@ -211,7 +211,7 @@ const Portfolio = () => {
                           pharmacy/ telemedicine website built with html, css,
                           bt, php and query.
                         </h3>
-                        <button className="u-align-left u-text u-text-default u-text-3">
+                        <button className="u-align-left u-text u-text-default u-text-3 buttons-me">
                           <a
                             className="button-me"
                             href="https://donation-website.vercel.app/"

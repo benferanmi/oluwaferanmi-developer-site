@@ -1,19 +1,12 @@
 import "./css/footer.css";
-import But from "../assets/button.jpg";
+import siteLogo from "../assets/logo.jpg";
 import { useRef } from "react";
 import emailjs from "@emailjs/browser";
 
 const Footer = () => {
   const form = useRef();
 
-  // const [lastName, setLastName] = useState("");
-  // const [firstName, setFirstName] = useState("");
-  // const [email, setEmail] = useState("");
-
-  // console.log(form);
-  const sendEmail = (e) => {
-    e.preventDefault();
-
+  const sendEmail = () => {
     emailjs
       .sendForm(
         "service_cted9nk",
@@ -23,7 +16,8 @@ const Footer = () => {
       )
       .then(
         (result) => {
-          console.log(result.text);
+          // console.log(result.text);
+          window.alert( result.text + 'The admin of  this website have gotten Your message and they will get back to you as soon as possible. Thanks.')
         },
         (error) => {
           console.log(error.text);
@@ -100,7 +94,7 @@ const Footer = () => {
       <hr />
       <div className="footer-section">
         <div className="section1">
-          <img src={But} alt="ben feranmi site website logo" />
+          <img src={siteLogo} alt="ben feranmi site website logo" />
 
           <p>Your satisfaction is my first and main priority.</p>
         </div>
@@ -115,8 +109,6 @@ const Footer = () => {
                 type="text"
                 placeholder="First Name"
                 name="first-name"
-                // value={firstName}
-                // onChange={(e) => setFirstName(e.target.value)}
                 required
               />
 
@@ -124,14 +116,12 @@ const Footer = () => {
                 type="text"
                 placeholder="Last Name"
                 name="last-name"
-                // value={lastName} onChange={(e) => setLastName(e.target.value) }
               />
 
               <input
                 type="email"
                 name="email"
                 placeholder="enter your email"
-                // value={email} onChange={(e) => setEmail(e.target.value) }
                 required
               />
 
@@ -151,10 +141,10 @@ const Footer = () => {
           </div>
 
           <div className="links">
-            <a href="/">link 1</a>
-            <a href="/">link 1</a>
-            <a href="/">link 1</a>
-            <a href="/">link 1</a>
+            <a href="https://brycigars.com/">Functional Cigar Website.</a>
+            <a href="backlinkmatter.com">SEO Website </a>
+            <a href="sledgelifecoaching.com">Coaching Website</a>
+            <a href="https://www.travestis-lisboa.beauty/">18+ website/adult website.</a>
             <a href="/">link 1</a>
             <a href="/">link 1</a>
           </div>

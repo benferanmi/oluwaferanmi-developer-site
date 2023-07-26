@@ -427,12 +427,17 @@
 .background-faint {
   background: #000000b8;
 }
-
+.buttons-me {
+  margin-top: 20px;
+  height: 40px;
+  width: 180px;
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+}
 .button-me {
-  padding-top: 20px;
-  padding-bottom: 20px;
-  padding-left: 10px;
-  padding-right: 10px;
+  font-size: 24px ;
+  font-weight: 500;
   text-decoration: none;
   color: black !important;
 }
