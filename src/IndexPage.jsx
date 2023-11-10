@@ -9,7 +9,7 @@ import { useRef } from "react";
 import { Helmet } from "react-helmet";
 
 const IndexPage = () => {
-  const workRef = useRef(null);
+  const workRef = useRef(null);5
 
   const scrollToSection = (ref) => {
     if (ref.current) {
@@ -25,10 +25,10 @@ const IndexPage = () => {
           content="react, frontend, developer, web development, html, css, tailwind, next, mongodb, full stack, benferanmi, foworg"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Benjamin Feranmi Portfolio</title>
+        <title>Opafunso Benjamin Feranmi Portfolio</title>
         <meta
           name="description"
-          content=" As a website developer, I specialize in crafting custom websites
+          content="As a website developer, I specialize in crafting custom websites
               that are not only visually stunning, but also highly functional
               and intuitive. From the initial design concept to the final
               product launch, I work closely with my clients to ensure that
@@ -36,7 +36,7 @@ const IndexPage = () => {
         />
         <meta
           property="og:title"
-          content="Benjamin feranmi portfolio website "
+          content="Opafunso Benjamin portfolio website "
         />
         <meta
           property="og:description"
