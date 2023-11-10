@@ -165,18 +165,7 @@
 
 .transistion {
   height: 100px;
-  background: linear-gradient(
-    166deg,
-    #00002a,
-    #00001c,
-    #050c12,
-    #061019,
-    #000001,
-    black,
-    #061019,
-    #050c12
-  );
-  
+  background: inherit;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -248,17 +237,7 @@
 
 .skill-transistion {
   height: 100px;
-  background: linear-gradient(
-    166deg,
-    #050c12,
-    #050c12,
-    #000024,
-    #050c12,
-    #000014,
-    #050c12,
-    #000000,
-    #000000
-  );
+  background: inherit;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -273,14 +252,7 @@
 }
 
 .skill {
-  background: linear-gradient(
-    90deg,
-    #00002c,
-    #00001a,
-    #000000,
-    #000000,
-    #000000
-  );
+  background: inherit;
   padding-top: 50px;
   padding-bottom: 50px;
 }

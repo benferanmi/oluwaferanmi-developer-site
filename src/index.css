@@ -6,9 +6,13 @@
   padding: 0px;
   margin: 0px;
   color: white;
-  background-color: inherit;
+  background-color: linear-gradient(90deg,#00002c,#00001a,#000000,#000000,#000000);
 }
 
+body {
+  background: linear-gradient(90deg,#00002c,#00001a,#000000,#000000,#000000);
+
+}
 p {
   font-family: 400 16px/24px Macan,Helvetica Neue,Helvetica,Arial,sans-serif;
 }

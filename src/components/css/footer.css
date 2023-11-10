@@ -49,6 +49,7 @@ svg {
   display: flex;
   flex-direction: column;
   gap: 100px;
+  margin-top: 15%;
 }
 
 .section1 img {
@@ -77,7 +78,7 @@ h1 {
     font-weight: 500;
 }
 input {
-  height: 30px;
+  height: 42px;
   color: black !important;
   background-color: white;
   border: 1px solid white;
@@ -96,7 +97,7 @@ button {
     color: black;
 }
 textarea {
-    min-height: 80px;
+    min-height: 120px;
     font-size: 12px;
     border-radius: 10px;
     outline: none;
@@ -110,7 +111,7 @@ textarea {
 
 .section3 {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 50px;
     flex-direction: column;
 }

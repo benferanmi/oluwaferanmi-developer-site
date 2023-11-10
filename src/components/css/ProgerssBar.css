@@ -162,15 +162,16 @@
 }
 
 .skill-other {
-  width: 100%;
+  width: 90%;
+  margin: auto;
   background: inherit;
 }
 
 .skill-other div {
-  width: 60%;
+  width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   margin-top: 30px;
   margin: auto;
   margin-bottom: 30px;
@@ -308,10 +309,10 @@
   }
 
   .skill-other div {
-    width: 70%;
+    width: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     margin-top: 30px;
     margin-bottom: 30px;
     background: inherit;
@@ -371,11 +372,11 @@
   }
 
   .skill-other div {
-    width: 80%;
+    width: 100%;
     margin: auto;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     margin-top: 30px;
     margin-bottom: 30px;
     background: inherit;
