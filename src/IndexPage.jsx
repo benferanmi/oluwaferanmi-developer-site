@@ -130,7 +130,7 @@ const IndexPage = () => {
 
       <Footer />
 
-      <a href="../sitemap.xml">Sitemap</a>
+      <a href="./sitemap.xml">Sitemap</a>
     </div>
   );
 };
