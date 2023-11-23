@@ -45,7 +45,7 @@ const Footer = () => {
             />
           </svg>
 
-          <p>+234 8125291401</p>
+          <p>+234 8133252105</p>
         </div>
 
         <a href="mailto: benferanmiopafunso@gmail.com">
