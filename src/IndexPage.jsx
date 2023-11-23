@@ -129,6 +129,8 @@ const IndexPage = () => {
       </div>
 
       <Footer />
+
+      <a href="../sitemap.xml">Sitemap</a>
     </div>
   );
 };
