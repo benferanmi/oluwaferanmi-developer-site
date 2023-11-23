@@ -56,7 +56,7 @@ const Contact = () => {
               <input
                 type="email"
                 name="email"
-                placeholder="enter your email"
+                placeholder="Your email"
                 required
               />
 

@@ -53,6 +53,7 @@ function NavBar({scrollToSection, workRef}) {
       <Link to="/contact">Contact</Link>
       <Link onClick={() => scrollToSection(workRef)} >Previous Works</Link>
       <Link to="/blogs">Blogs</Link>
+
     </div>}
       </div>
       </div>
@@ -65,7 +66,6 @@ function NavBar({scrollToSection, workRef}) {
       <Link to="/contact">Contact</Link>
       <Link onClick={() => scrollToSection(workRef)} >Previous Works</Link>
       <Link to="/blogs">Blogs</Link>
-      <a href='http://www.seobrandstudio.it' target='blank_'>Seo Page</a>
     </div>
   );
 }
