@@ -1,0 +1,456 @@
+.u-section-1 .u-sheet-1 {
+  min-height: 1162px;
+}
+
+.u-section-1 .u-text-1 {
+  margin: 60px auto 0 0;
+}
+
+.u-section-1 .u-list-1 {
+  margin-top: 39px;
+  margin-bottom: 0;
+  grid-template-rows: repeat(1, auto);
+}
+
+.u-section-1 .u-repeater-1 {
+  grid-template-columns: repeat(3, calc(33.3333% - 6.66667px));
+  min-height: 884px;
+  grid-gap: 10px;
+}
+
+.u-section-1 .u-image-1 {
+  background-image: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.25),
+      rgba(0, 0, 0, 0.25)
+    ),
+    url("https://res.cloudinary.com/benferanmi/image/upload/v1687635260/portfolio/sledge_v5x1f2.png");
+  border-radius: 20px;
+  background-position: contain;
+
+  background-position: 50% 50%;
+  height: 400px;
+}
+.u-section-1 .u-image-a1 {
+  background-image: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.25),
+      rgba(0, 0, 0, 0.25)
+    ),
+    url("https://res.cloudinary.com/benferanmi/image/upload/v1688499695/screencapture-gulfair-2023-07-04-20_31_35_xqm1tw.png");
+  border-radius: 20px;
+  background-position: 50% 50%;
+  height: 400px;
+}
+.u-section-1 .u-image-b1 {
+  height: 400px;
+
+  background-image: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.25),
+      rgba(0, 0, 0, 0.25)
+    ),
+    url("../assets/portfolio/travelup.png");
+  border-radius: 20px;
+  background-position: 50% 50%;
+}
+.u-section-1 .u-image-c1 {
+  height: 400px;
+  background-image: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.25),
+      rgba(0, 0, 0, 0.25)
+    ),
+    url("../assets/portfolio/fshealth.png");
+  border-radius: 20px;
+  background-position: 50% 50%;
+}
+
+.u-section-1 .u-container-layout-1 {
+  padding: 30px 0 0;
+}
+
+.u-section-1 .u-group-1 {
+  min-height: 138px;
+  margin-top: 0;
+  margin-bottom: 0;
+  height: auto;
+}
+
+.u-section-1 .u-container-layout-2 {
+  padding: 30px 20px;
+}
+
+.u-section-1 .u-text-2 {
+  text-transform: uppercase;
+  margin: 0 auto 0 0;
+}
+
+.u-section-1 .u-text-3 {
+  margin: 20px auto 0 0;
+}
+
+.u-section-1 .u-image-2 {
+  background-image: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.25),
+      rgba(0, 0, 0, 0.25)
+    ),
+    url("../assets/portfolio/nadal.png");
+  border-radius: 20px;
+  background-position: 50% 50%;
+  height: 400px;
+}
+
+.u-section-1 .u-container-layout-3 {
+  padding: 30px 0 0;
+}
+
+.u-section-1 .u-group-2 {
+  min-height: 138px;
+  margin-top: 0;
+  margin-bottom: 0;
+  height: auto;
+}
+
+.u-section-1 .u-container-layout-4 {
+  padding: 30px 20px;
+}
+
+.u-section-1 .u-text-4 {
+  text-transform: uppercase;
+  margin: 0 auto 0 0;
+}
+
+.u-section-1 .u-text-5 {
+  margin: 20px auto 0 0;
+}
+
+.u-section-1 .u-image-3 {
+  background-image: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.25),
+      rgba(0, 0, 0, 0.25)
+    ),
+    url("../assets/portfolio/delce.png");
+  border-radius: 20px;
+  background-position: 50% 50%;
+  height: 400px;
+}
+
+.u-section-1 .u-container-layout-5 {
+  padding: 30px 0 0;
+}
+
+.u-section-1 .u-group-3 {
+  min-height: 138px;
+  margin-top: 0;
+  margin-bottom: 0;
+  height: auto;
+}
+
+.u-section-1 .u-container-layout-6 {
+  padding: 30px 20px;
+}
+
+.u-section-1 .u-text-6 {
+  text-transform: uppercase;
+  margin: 0 auto 0 0;
+}
+
+.u-section-1 .u-text-7 {
+  margin: 20px auto 0 0;
+}
+
+.u-section-1 .u-image-4 {
+  background-image: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.25),
+      rgba(0, 0, 0, 0.25)
+    ),
+    url("../assets/portfolio/donation.png");
+  border-radius: 20px;
+  height: 400px;
+
+  background-position: 50% 50%;
+}
+
+.u-section-1 .u-container-layout-7 {
+  padding: 30px 0 0;
+}
+
+.u-section-1 .u-group-4 {
+  min-height: 138px;
+  margin-top: 0;
+  margin-bottom: 0;
+  height: auto;
+}
+
+.u-section-1 .u-container-layout-8 {
+  padding: 30px 20px;
+}
+
+.u-section-1 .u-text-8 {
+  text-transform: uppercase;
+  margin: 0 auto 0 0;
+}
+
+.u-section-1 .u-text-9 {
+  margin: 20px auto 0 0;
+}
+
+.u-section-1 .u-image-5 {
+  background-image: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.25),
+      rgba(0, 0, 0, 0.25)
+    ),
+    url("../assets/portfolio/pharmacy.png");
+  border-radius: 20px;
+  background-position: 50% 50%;
+  height: 400px;
+}
+
+.u-section-1 .u-container-layout-9 {
+  padding: 30px 0 0;
+}
+
+.u-section-1 .u-group-5 {
+  min-height: 138px;
+  margin-top: 0;
+  margin-bottom: 0;
+  height: auto;
+}
+
+.u-section-1 .u-container-layout-10 {
+  padding: 30px 20px;
+}
+
+.u-section-1 .u-text-10 {
+  text-transform: uppercase;
+  margin: 0 auto 0 0;
+}
+
+.u-section-1 .u-text-11 {
+  margin: 20px auto 0 0;
+}
+
+.u-section-1 .u-image-6 {
+  background-image: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.25),
+      rgba(0, 0, 0, 0.25)
+    ),
+    url("//images01.nicepagecdn.com/c461c07a441a5d220e8feb1a/8c593f782d1654b09c0aa7b3/jhjh688.jpg");
+  border-radius: 20px;
+  background-position: 50% 50%;
+  height: 400px;
+}
+
+.u-section-1 .u-container-layout-11 {
+  padding: 30px 0 0;
+}
+
+.u-section-1 .u-group-6 {
+  min-height: 138px;
+  margin-top: 0;
+  margin-bottom: 0;
+  height: auto;
+}
+
+.u-section-1 .u-container-layout-12 {
+  padding: 30px 20px;
+}
+
+.u-section-1 .u-text-12 {
+  text-transform: uppercase;
+  margin: 0 auto 0 0;
+}
+
+.u-section-1 .u-text-13 {
+  margin: 20px auto 0 0;
+}
+
+.u-section-1 .u-text-14 {
+  margin: 20px auto 60px 0;
+}
+
+.u-section-1 .u-btn-1 {
+  background-image: none;
+  border-style: solid;
+  padding: 0;
+}
+
+@media (max-width: 1199px) {
+  .u-section-1 .u-sheet-1 {
+    min-height: 1006px;
+  }
+
+  .u-section-1 .u-repeater-1 {
+    grid-template-columns: repeat(3, calc(33.333333333333336% - 6.66667px));
+    min-height: 728px;
+  }
+
+  .u-section-1 .u-group-1 {
+    height: auto;
+  }
+
+  .u-section-1 .u-text-3 {
+    font-size: 1.875rem;
+  }
+
+  .u-section-1 .u-group-2 {
+    height: auto;
+  }
+
+  .u-section-1 .u-text-5 {
+    font-size: 1.875rem;
+  }
+
+  .u-section-1 .u-group-3 {
+    height: auto;
+  }
+
+  .u-section-1 .u-text-7 {
+    font-size: 1.875rem;
+  }
+
+  .u-section-1 .u-group-4 {
+    height: auto;
+  }
+
+  .u-section-1 .u-text-9 {
+    font-size: 1.875rem;
+  }
+
+  .u-section-1 .u-group-5 {
+    height: auto;
+  }
+
+  .u-section-1 .u-text-11 {
+    font-size: 1.875rem;
+  }
+
+  .u-section-1 .u-group-6 {
+    height: auto;
+  }
+
+  .u-section-1 .u-text-13 {
+    font-size: 1.875rem;
+  }
+}
+
+@media (max-width: 991px) {
+  .u-section-1 .u-repeater-1 {
+    grid-template-columns: repeat(2, calc(50% - 5.0000025px));
+    min-height: 1267px;
+  }
+}
+
+@media (max-width: 767px) {
+  .u-section-1 .u-sheet-1 {
+    min-height: 1410px;
+  }
+
+  .u-section-1 .u-list-1 {
+    margin-top: 30px;
+  }
+
+  .u-section-1 .u-repeater-1 {
+    grid-template-columns: repeat(2, calc(50% - 5px));
+    min-height: 1162px;
+  }
+
+  .u-section-1 .u-container-layout-2 {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .u-section-1 .u-container-layout-4 {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .u-section-1 .u-container-layout-6 {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .u-section-1 .u-container-layout-8 {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .u-section-1 .u-container-layout-10 {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .u-section-1 .u-container-layout-12 {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+@media (max-width: 575px) {
+  .u-section-1 .u-sheet-1 {
+    min-height: 2561px;
+  }
+
+  .u-section-1 .u-repeater-1 {
+    grid-template-columns: 100%;
+    min-height: 2313px;
+  }
+
+  .u-section-1 .u-group-1 {
+    margin-top: 192px;
+  }
+
+  .u-section-1 .u-group-2 {
+    margin-top: 192px;
+  }
+
+  .u-section-1 .u-group-3 {
+    margin-top: 192px;
+  }
+
+  .u-section-1 .u-group-4 {
+    margin-top: 192px;
+  }
+
+  .u-section-1 .u-group-5 {
+    margin-top: 192px;
+  }
+
+  .u-section-1 .u-group-6 {
+    margin-top: 192px;
+  }
+}
+
+.background-faint {
+  background: #000000b8;
+}
+.buttons-me {
+  margin-top: 20px;
+  height: 40px;
+  width: 180px;
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+  background-color: #00002b !important;
+}
+
+.button-me {
+  font-size: 18px !important;
+  font-weight: 500;
+  padding: 5px 10px;
+  text-decoration: none;
+  color: white !important; 
+  background-color: #00002b !important;
+
+}
+
+.bg-none {
+  background: unset !important;
+  background-color: unset !important;
+}

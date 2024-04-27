@@ -1,0 +1,29 @@
+.footer-space {
+    display: flex;
+    justify-content: center;
+    width: 80%;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin: auto;
+}
+.head {
+    margin-top: 50px;
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+.section2 {
+    width: 80%;
+}
+
+.button {
+    width: 100%;
+    text-align: center;
+    display: block;
+}
+
+button {
+    color: black; 
+}
