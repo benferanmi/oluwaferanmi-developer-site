@@ -1,4 +1,0 @@
-User-agent: *
-Disallow:
-
-Sitemap: https://oluwaferanmi-developer-site.vercel.app/sitemap.xml
