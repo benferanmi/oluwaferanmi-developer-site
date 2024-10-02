@@ -1,9 +1,9 @@
 import './App.css'
-import {Routes, Route} from 'react-router-dom'
-import IndexPage from './IndexPage.jsx'
-import Layout from './Layout.jsx'
-import Contact from './Contact/Contact'
-import Blog from './Blogs'
+import { Routes, Route } from 'react-router-dom'
+import Contact from './pages/Contact.jsx'
+import Home from './pages/Home.jsx'
+import Blog from './pages/Blogs.jsx'
+import Portfolio from './pages/Portfolio.jsx'
 
 
 function App() {
@@ -11,13 +11,14 @@ function App() {
   return (
     <>
       <Routes>
-      <Route index element={<IndexPage />} />
-      <Route path='/' element={<Layout />} />
-      <Route path='/contact' element={<Contact />} />
-      <Route path='/blogs' element={<Blog />} />
+        <Route index element={<Home />} />
+        <Route path='/contact' element={<Contact />} />
+        <Route path='/blogs' element={<Blog />} />
+        <Route path='/portfolio' element={<Portfolio />} />
       </Routes>
     </>
   )
 }
 
 export default App
+

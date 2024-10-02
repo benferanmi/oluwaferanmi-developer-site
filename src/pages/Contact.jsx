@@ -1,4 +1,4 @@
-import './css/contact.css'
+import '../css/contact.css'
 import '../components/css/footer.css'
 import NavBar from "../components/NavBar";
 import { useRef } from "react";

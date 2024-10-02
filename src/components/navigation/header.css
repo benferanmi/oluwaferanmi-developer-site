@@ -1,0 +1,61 @@
+header {
+  background: inherit !important;
+}
+.desktop-nav {
+  display: none;
+}
+@media screen and (min-width: 800px) {
+  .nar-m-menu {
+    display: none;
+  }
+
+  .desktop-nav {
+    display: block;
+    width: 100%;
+  }
+
+  .desktop-menu {
+    display: flex;
+    background-color: inherit;
+    height: 130px;
+    align-items: center;
+    justify-content: space-between;
+    margin: auto;
+  }
+  .desktop-nav-logo {
+    display: flex;
+    flex-direction: row;
+    gap: 0.2em;
+    align-items: flex-end;
+  }
+  .desktop-nav-logo h2 {
+    margin: 0;
+    color: #fba81f;
+  }
+
+  .desktop-nav-logo svg {
+    height: auto;
+    width: 120px;
+  }
+  .desktop-nav-logo strong {
+    display: block;
+    font-size: 40px;
+    color: #fba81f;
+  }
+  .desktop-nav-list {
+    display: flex;
+    flex-direction: row;
+    gap: 2em;
+    flex-wrap: nowrap;
+  }
+
+  .desktop-nav a {
+    color: white !important;
+    padding-bottom: 5px !important;
+  }
+
+  .desktop-nav a:hover {
+    color: #fba81f !important;
+    border-bottom: 2.5px solid aqua !important;
+  }
+}
