@@ -7,7 +7,7 @@ import PortGif from '../assets/ports.gif'
 const Portfolio = () => {
     return (
         <div >
-            <section className="ben_port">
+            <section className="container-pages">
                 <Header />
             </section>
 
@@ -17,7 +17,7 @@ const Portfolio = () => {
                         <h1>Explore My Works</h1>
                     </span>
                 </div>
-                <div className="bp-head ben_port">
+                <div className="bp-head container-pages">
 
                     <div className="bp-breadcrumb">
                         <div className="bp-bc-left">
@@ -48,14 +48,14 @@ const Portfolio = () => {
                                 CMS & Website Builders
                             </h2>
                             <p>
-                                Whether you&apos;re looking to build a custom site or need flexibility with a Content Management System, we’ve got you covered. From WordPress and Elementor to platforms like Wix, GoDaddy, and Webflow, we tailor solutions that give you control over your content without compromising on design or functionality.
+                                Whether you&apos;re looking to build a custom site or need flexibility with a Content Management System, we&apos;ve got you covered. From WordPress and Elementor to platforms like Wix, GoDaddy, and Webflow, we tailor solutions that give you control over your content without compromising on design or functionality.
                             </p>
                         </div>
                     </div>
                 </div>
 
 
-                <div className="bp-work ben_port">
+                <div className="bp-work container-pages">
                     <div className="bp-works">
                         <div>
                             <PrevWork sliceValue={20} />
@@ -66,7 +66,7 @@ const Portfolio = () => {
 
             <hr />
 
-            <section className="ben_port">
+            <section className="container-pages">
                 <Footer />
             </section>
         </div>

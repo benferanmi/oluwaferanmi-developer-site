@@ -1,29 +1,36 @@
-.footer-space {
-    display: flex;
-    justify-content: center;
-    width: 80%;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    margin: auto;
-}
-.head {
-    margin-top: 50px;
-    display: block;
-    width: 100%;
-    text-align: center;
-}
-.section2 {
-    width: 80%;
+.contact-cont {
+  margin: 3em 0;
+  width: 60%;
+  margin: auto;
 }
 
-.button {
-    width: 100%;
-    text-align: center;
-    display: block;
+@media screen and (max-width: 700px) {
+  .contact-cont {
+    width: 80%;
+  }
 }
 
-button {
-    color: black; 
+.contact-cont form {
+  padding: 2em 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.8em;
+}
+
+.contact-cont input {
+  height: 40px;
+  border: 1px solid whitesmoke;
+  border-radius: 5px;
+  padding: 0 10px;
+  background: none;
+  color: white;
+  outline: none;
+}
+.contact-cont textarea {
+  min-height: 150px;
+  max-height: 400px;
+  border: none;
+  color: #ffffff;
+  outline: none;
+  padding: 5px;
 }

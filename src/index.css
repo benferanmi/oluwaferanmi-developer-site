@@ -78,6 +78,11 @@ p {
     transform: translateY(-10px);
   }
 }
+.container-pages {
+  display: block;
+  width: 90%;
+  margin: auto;
+}
 
 .container-sm {
   width: 100%;
@@ -116,6 +121,13 @@ p {
   h5,
   h6 {
     text-align: center;
+  }
+  
+  .container-pages {
+    width: 95%;
+  }
+  .nav-menutoggle {
+    left: 20px;
   }
 }
 
