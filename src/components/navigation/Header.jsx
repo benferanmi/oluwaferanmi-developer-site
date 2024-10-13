@@ -32,10 +32,7 @@ export const Header = () => {
     const { height } = useDimensions(containerRef);
 
     return (
-
-
         <div>
-
             <div className="desktop-nav">
                 <div className="desktop-menu">
                     <div className="desktop-nav-logo">
@@ -47,16 +44,15 @@ export const Header = () => {
                             <path transform="translate(531,140)" d="m0 0 5 3 74 74 9 13 4 12v11l-3 10-6 10-84 84-12 6-4 1h-17l-11-4-11-8-77-77v-3l131-131z" fill="#fec502" />
 
                         </svg>
-
                         <strong>.</strong> <h2>FOlIO</h2>
                     </div>
 
                     <div className="desktop-nav-list">
                         <Link to='/'>Home</Link>
-                        <Link to='/about'>About</Link>
-                        <Link to='/service'>Service</Link>
-                        <Link to='/portfolio'>Portfolio</Link>
-                        <Link to='/blog'>Blog </Link>
+                        {/* <Link to='/about'>About</Link> */}
+                        {/* <Link to='/service'>Service</Link> */}
+                        <Link to='/prev'>Previous Works</Link>
+                        {/* <Link to='/blog'>Blog </Link> */}
                         <Link to='/contact'>Contact</Link>
                     </div>
                 </div>

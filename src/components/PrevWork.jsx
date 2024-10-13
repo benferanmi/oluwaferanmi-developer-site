@@ -8,10 +8,11 @@ import PortSix from '../assets/portfolio/vipsport.png'
 // import PortSeven from '../assets/portfolio/pharmacy.png'
 import PortEight from '../assets/portfolio/bry.png'
 import PortNine from '../assets/portfolio/everything.png'
+import PropTypes from 'prop-types'
 
 
 
-const PrevWork = () => {
+const PrevWork = ({sliceValue}) => {
 
   const portArray = [
     {
@@ -114,10 +115,10 @@ const PrevWork = () => {
 
 
             {
-              portArray?.slice(0, 4).map(port => {
+              portArray?.slice(0, sliceValue).map(port => {
                 return (
                   <>
-                    <div className='p-port-gcont'>
+                    <div className='p-port-gcont' key={port.id}>
                       <a href={port.siteLink}>
                         <img src={port.imgUrl} alt={port.siteName} />
 
@@ -144,5 +145,9 @@ const PrevWork = () => {
     </>
   );
 };
+
+PrevWork.propTypes = {
+  sliceValue: PropTypes.number.isRequired
+}
 
 export default PrevWork;

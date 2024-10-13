@@ -1,7 +1,18 @@
-import "./css/footer.css"
+import "./css/footer.css";
 
 
 const Footer = () => {
+
+  const downloadCv = () => {
+    const cvUrl = '/cv.pdf';
+    const link = document.createElement('a');
+    link.href = cvUrl;
+    link.download = 'YourName_CV.pdf'; // This is the filename that will appear in the download dialog
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
+
   return (
     <>
       <footer>
@@ -9,7 +20,7 @@ const Footer = () => {
           <div className="footer-left"><p>@Copyright 2024. Benferanmi - All Right Reserverd</p></div>
           <div className="footer-mid">
             <div className="cv-download footer-cv" >
-              <div onClick={''} style={{ width: '220px', background: 'none', border: '1.5px solid #f87537' }}>Download Cv</div>
+              <div onClick={downloadCv} style={{ width: '220px', background: 'none', cursor: 'pointer', border: '1.5px solid #f87537' }}>Download Cv</div>
             </div>
           </div>
           <div className="footer-right">
