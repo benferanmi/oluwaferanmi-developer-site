@@ -28,11 +28,15 @@ const Contact = () => {
 
   return (
     <>
-      <section className='container-pages'>
+      <section >
         <Header />
       </section>
 
-      <div style={{ background: 'var(--text-clip-bg)', margin: '5em 0' }}>
+      <div className='head-spacer'>
+        
+      </div>
+
+      <div style={{ background: 'var(--text-clip-bg)', marginBottom: '5em' }}>
         <span className="bp-w-head">
           <h1>Contact Us </h1>
         </span>

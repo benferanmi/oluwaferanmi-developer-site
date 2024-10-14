@@ -11,7 +11,8 @@ header {
 
   .desktop-nav {
     display: block;
-    width: 100%;
+    width: 90%;
+    margin: auto;
   }
 
   .desktop-menu {
@@ -27,8 +28,17 @@ header {
     flex-direction: row;
     gap: 0.2em;
     align-items: flex-end;
+    position: relative;
   }
-  .desktop-nav-logo h2 {
+  .desktop-nav-logo span {
+    position: absolute;
+    right: -25%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+  .desktop-nav-logo span h2 {
     margin: 0;
     color: #fba81f;
   }
@@ -37,8 +47,7 @@ header {
     height: auto;
     width: 120px;
   }
-  .desktop-nav-logo strong {
-    display: block;
+  .desktop-nav-logo span sup {
     font-size: 40px;
     color: #fba81f;
   }

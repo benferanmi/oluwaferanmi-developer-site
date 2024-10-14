@@ -7,7 +7,7 @@ const SkillList = () => {
     const skillArray = [
         {
             id: 1,
-            name: 'Html',
+            name: 'HTML',
             percentage: 100
         },
         {
@@ -17,27 +17,27 @@ const SkillList = () => {
         },
         {
             id: 3,
-            name: 'React Javascript',
+            name: 'React (JavaScript)',
             percentage: 100
         },
         {
             id: 4,
-            name: 'Next Javascript',
+            name: 'Next.js (JavaScript)',
             percentage: 100
         },
         {
             id: 5,
-            name: 'Node Javascript',
+            name: 'Node.js (JavaScript)',
             percentage: 90
         },
         {
             id: 6,
-            name: 'Express Javascript',
+            name: 'Express.js (JavaScript)',
             percentage: 90
         },
         {
             id: 7,
-            name: 'Git',
+            name: 'GIT',
             percentage: 100
         },
         {
@@ -47,7 +47,7 @@ const SkillList = () => {
         },
         {
             id: 9,
-            name: 'Mysqli',
+            name: 'MySQLi',
             percentage: 100
         },
         {
@@ -57,7 +57,7 @@ const SkillList = () => {
         },
         {
             id: 11,
-            name: 'Wordpress Cms',
+            name: 'WordPress (CMS)',
             percentage: 100
         },
         {
@@ -67,7 +67,7 @@ const SkillList = () => {
         },
         {
             id: 13,
-            name: 'Godaddy',
+            name: 'GoDaddy',
             percentage: 100
         },
         {
@@ -77,7 +77,7 @@ const SkillList = () => {
         },
         {
             id: 15,
-            name: 'Elementor',
+            name: 'Elementor Page Builder',
             percentage: 100
         },
 

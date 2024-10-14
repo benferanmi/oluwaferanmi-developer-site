@@ -612,6 +612,11 @@ li {
   border-bottom: 1px solid whitesmoke;
   margin-top: 30px;
 }
+
+.home-c-form form .span_text {
+  height: fit-content !important;
+  align-items: flex-start !important;
+}
 .home-c-form form input {
   outline: none;
   border: none;
@@ -619,6 +624,7 @@ li {
   background: none;
   color: white;
   height: 40px;
+  margin-left: 10px;
 }
 
 .home-c-form form textarea {

@@ -28,9 +28,9 @@ const Home = () => {
     document.body.removeChild(link);
   }
   return (
-    <div className="main-cont">
+    <div className="">
 
-      <div>
+      <div className="">
         <Header />
       </div>
       <Helmet>
@@ -68,7 +68,7 @@ const Home = () => {
         />
         <meta property="og:type" content="website" />
       </Helmet>
-      <div className="header-bg">
+      <div className="header-bg main-cont" >
         { }
         <span className="header">
           <div className="left">
@@ -104,7 +104,7 @@ const Home = () => {
           </div>
         </span>
       </div>
-      <div className="about">
+      <div className="about main-cont">
 
         <div className="about-flex">
           <div className="about-body">
@@ -197,14 +197,14 @@ const Home = () => {
       </div>
 
 
-      <div className="works-section">
+      <div className="works-section main-cont">
         <div className="portfolios" >
           <PrevWork sliceValue={4} />
         </div>
       </div>
 
 
-      <div className="home-c">
+      <div className="home-c main-cont">
         <div className="home-c-body">
           <div className="home-c-head">
             <h1 className="text-clip">Have Any Project In Mind</h1>
@@ -224,7 +224,7 @@ const Home = () => {
                 <label>Subject</label>
                 <input type="text" name="Subject" value={subject} onChange={(e) => setSubject(e.target.value)} />
               </span>
-              <span>
+              <span className="span_text">
                 <label>Project Details</label>
                 <textarea name="Project Details" value={details} onChange={(e) => setDetails(e.target.value)} />
               </span>
@@ -234,7 +234,9 @@ const Home = () => {
       </div>
 
 
-      <Footer />
+      <div className="container-pages">
+        <Footer />
+      </div>
     </div>
   );
 };

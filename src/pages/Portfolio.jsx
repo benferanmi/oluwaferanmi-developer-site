@@ -7,12 +7,14 @@ import PortGif from '../assets/ports.gif'
 const Portfolio = () => {
     return (
         <div >
-            <section className="container-pages">
+            <section className="">
                 <Header />
             </section>
+            <div className='head-spacer'>
 
+            </div>
             <section>
-                <div style={{ background: 'var(--text-clip-bg)', margin: '5em 0' }}>
+                <div style={{ background: 'var(--text-clip-bg)', marginBottom: '5em' }}>
                     <span className="bp-w-head">
                         <h1>Explore My Works</h1>
                     </span>
