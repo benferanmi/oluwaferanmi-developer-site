@@ -1,4 +1,4 @@
-import './css/animatedprogressbar.css';
+import './css/skllList.css';
 // eslint-disable-next-line no-unused-vars
 import { delay, motion } from 'framer-motion';
 
@@ -63,6 +63,11 @@ const SkillList = () => {
         {
             id: 12,
             name: 'Webflow',
+            percentage: 100
+        },
+        {
+            id: 16,
+            name: 'Bubble.io',
             percentage: 100
         },
         {

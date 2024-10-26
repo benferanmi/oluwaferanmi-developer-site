@@ -12,7 +12,7 @@ import PropTypes from 'prop-types'
 
 
 
-const PrevWork = ({sliceValue}) => {
+const PrevWork = ({ sliceValue }) => {
 
   const portArray = [
     {
@@ -115,10 +115,10 @@ const PrevWork = ({sliceValue}) => {
 
 
             {
-              portArray?.slice(0, sliceValue).map(port => {
+              portArray?.slice(0, sliceValue).map((port, index) => {
                 return (
-                  <>
-                    <div className='p-port-gcont' key={port.id}>
+                  <div key={index}>
+                    <div className='p-port-gcont'>
                       <a href={port.siteLink}>
                         <img src={port.imgUrl} alt={port.siteName} />
 
@@ -134,7 +134,7 @@ const PrevWork = ({sliceValue}) => {
                         </div>
                       </a>
                     </div>
-                  </>
+                  </div>
                 )
               })
             }

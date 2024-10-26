@@ -100,7 +100,13 @@
     transform: scaleX(0.7);
   }
 }
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 800px) {
+  .ap-grid {
+    width: 80%;
+    margin: auto;
+  }
+}
+@media screen and (max-width: 540px) {
   .ap-grid {
     display: grid;
     grid-template-columns: 98%;
@@ -111,5 +117,12 @@
   }
   .ap-skill {
     width: 100%;
+  }
+  .ap-head {
+    margin-bottom: 2em !important;
+  }
+  .ap-grid {
+    margin: auto;
+    width: 90%;
   }
 }

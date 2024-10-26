@@ -1,5 +1,4 @@
 import Footer from "../components/Footer";
-import { Header } from "../components/navigation/Header";
 import PrevWork from "../components/PrevWork";
 import '../css/portfolio.css'
 import PortGif from '../assets/ports.gif'
@@ -7,11 +6,7 @@ import PortGif from '../assets/ports.gif'
 const Portfolio = () => {
     return (
         <div >
-            <section className="">
-                <Header />
-            </section>
             <div className='head-spacer'>
-
             </div>
             <section>
                 <div style={{ background: 'var(--text-clip-bg)', marginBottom: '5em' }}>
@@ -66,11 +61,6 @@ const Portfolio = () => {
                 </div>
             </section>
 
-            <hr />
-
-            <section className="container-pages">
-                <Footer />
-            </section>
         </div>
     )
 }

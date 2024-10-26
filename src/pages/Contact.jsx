@@ -1,8 +1,6 @@
 import '../css/contact.css';
 import { useRef } from "react";
 import emailjs from "@emailjs/browser";
-import Footer from '../components/Footer';
-import { Header } from '../components/navigation/Header';
 
 const Contact = () => {
   const form = useRef();
@@ -28,20 +26,13 @@ const Contact = () => {
 
   return (
     <>
-      <section >
-        <Header />
-      </section>
-
-      <div className='head-spacer'>
-        
-      </div>
+      <div className='head-spacer'></div>
 
       <div style={{ background: 'var(--text-clip-bg)', marginBottom: '5em' }}>
         <span className="bp-w-head">
           <h1>Contact Us </h1>
         </span>
       </div>
-
 
       <div className="contact-space">
         <div className="contact-body">
@@ -86,9 +77,6 @@ const Contact = () => {
         </div>
       </div>
 
-      <section className='container-pages'>
-        <Footer />
-      </section>
     </>
   );
 };

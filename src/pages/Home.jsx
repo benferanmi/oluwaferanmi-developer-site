@@ -1,10 +1,8 @@
 import "../css/style.css";
 import img from "../assets/gif 2.gif";
 import { Link } from "react-router-dom";
-import Footer from "../components/Footer";
 import PrevWork from "../components/PrevWork";
 import { Helmet } from "react-helmet";
-import { Header } from "../components/navigation/Header";
 import SkillList from '../components/SkillList'
 // import meImg from '../assets/me.png';
 import me2Img from '../assets/meNoBg.png';
@@ -29,10 +27,6 @@ const Home = () => {
   }
   return (
     <div className="">
-
-      <div className="">
-        <Header />
-      </div>
       <Helmet>
         <meta name="author" content="Opafunso Benjamin Feranmi" />
         <meta
@@ -193,16 +187,12 @@ const Home = () => {
       <div className="skill">
         <SkillList />
       </div>
-      <div className="skill">
-      </div>
-
 
       <div className="works-section main-cont">
         <div className="portfolios" >
           <PrevWork sliceValue={4} />
         </div>
       </div>
-
 
       <div className="home-c main-cont">
         <div className="home-c-body">
@@ -231,11 +221,6 @@ const Home = () => {
             </form>
           </div>
         </div>
-      </div>
-
-
-      <div className="container-pages">
-        <Footer />
       </div>
     </div>
   );
