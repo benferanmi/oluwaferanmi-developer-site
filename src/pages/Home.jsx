@@ -68,7 +68,7 @@ const Home = () => {
           <div className="left">
             <p className="head-greeting"></p>
 
-            <h2 style={{ color: '#FBA81F', fontSize: '1.2em', marginBottom: '2px' }}>
+            <h2 className="text-clip" style={{ background: 'var(--text-clip-bg)', fontSize: '1.4em', marginBottom: '2px' }}>
               Website Developer
             </h2>
             <h1 className="head-name">
