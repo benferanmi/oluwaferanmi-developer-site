@@ -8,6 +8,7 @@ import PortSix from '../assets/portfolio/vipsport.png'
 // import PortSeven from '../assets/portfolio/pharmacy.png'
 import PortEight from '../assets/portfolio/bry.png'
 import PortNine from '../assets/portfolio/everything.png'
+import port12 from '../assets/portfolio/kikxbet.png'
 import PropTypes from 'prop-types'
 
 
@@ -16,12 +17,27 @@ const PrevWork = ({ sliceValue }) => {
 
   const portArray = [
     {
-      id: 1,
-      imgUrl: PortOne,
-      siteLink: '',
-      siteName: 'Pharmacy Website Landing Page',
-      siteCategory: 'Landing Page',
+      id: 12,
+      imgUrl: port12,
+      siteLink: 'https://kikxbet.vercel.app/',
+      siteName: 'Betting website ',
+      siteCategory: 'Front End Development | Next, React',
     },
+    {
+      id: 5,
+      imgUrl: PortSix,
+      siteLink: 'https://vipsportbets.com/',
+      siteName: 'Live Sport Odd website ',
+      siteCategory: 'Website Development | React, Node, Express',
+    },
+    {
+      id: 7,
+      imgUrl: PortEight,
+      siteLink: 'https://brycigars.com/',
+      siteName: 'Ecommerce website ',
+      siteCategory: 'Website Design / Wordpress',
+    },
+
     {
       id: 2,
       imgUrl: PortThree,
@@ -44,24 +60,10 @@ const PrevWork = ({ sliceValue }) => {
       siteCategory: 'Website Design',
     },
     {
-      id: 5,
-      imgUrl: PortSix,
-      siteLink: 'https://vipsportbets.com/',
-      siteName: 'Live Sport Odd website ',
-      siteCategory: 'Website Development | React, Node, Express',
-    },
-    {
       id: 6,
       imgUrl: PortNine,
       siteLink: 'https://everythinglitterandglam.com/',
       siteName: 'Clothing Ecommerce website ',
-      siteCategory: 'Website Design / Wordpress',
-    },
-    {
-      id: 7,
-      imgUrl: PortEight,
-      siteLink: 'https://brycigars.com/',
-      siteName: 'Ecommerce website ',
       siteCategory: 'Website Design / Wordpress',
     },
     {
@@ -76,6 +78,13 @@ const PrevWork = ({ sliceValue }) => {
       imgUrl: PortFive,
       siteLink: 'https://nadaiapparel.com/',
       siteName: 'Ecommerce Website',
+      siteCategory: 'Landing Page',
+    },
+    {
+      id: 1,
+      imgUrl: PortOne,
+      siteLink: '',
+      siteName: 'Pharmacy Website Landing Page',
       siteCategory: 'Landing Page',
     },
 
