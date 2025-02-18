@@ -37,7 +37,6 @@ const PrevWork = ({ sliceValue }) => {
       siteName: 'Ecommerce website ',
       siteCategory: 'Website Design / Wordpress',
     },
-
     {
       id: 2,
       imgUrl: PortThree,
