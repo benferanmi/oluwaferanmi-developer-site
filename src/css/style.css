@@ -687,7 +687,7 @@ p {
   }
 
   .about-img svg {
-    width: 190px;
+    width: 190%;
   }
   .about-cont {
     width: 90%;

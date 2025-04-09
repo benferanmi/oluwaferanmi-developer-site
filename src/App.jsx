@@ -6,6 +6,7 @@ import Blog from './pages/Blogs.jsx'
 import Portfolio from './pages/Portfolio.jsx'
 import Footer from './components/Footer.jsx'
 import { Header } from './components/navigation/Header.jsx'
+import Offers from './pages/Offers.jsx'
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <Route path='/contact' element={<Contact />} />
         <Route path='/blogs' element={<Blog />} />
         <Route path='/prev' element={<Portfolio />} />
+        <Route path="/offers" element={<Offers />} />
       </Routes>
       <div className='footer_spacer'></div>
       <hr />

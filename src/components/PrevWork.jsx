@@ -107,7 +107,7 @@ const PrevWork = ({ sliceValue }) => {
             </div>
             <div className='port-header-cright'>
               <span>
-                <a href=''>
+                <a href='' className='text-white'>
                   View All
                 </a>
               </span>

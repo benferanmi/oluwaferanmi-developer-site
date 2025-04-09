@@ -4,10 +4,9 @@ import { Link } from "react-router-dom";
 import PrevWork from "../components/PrevWork";
 import { Helmet } from "react-helmet";
 import SkillList from '../components/SkillList'
-// import meImg from '../assets/me.png';
 import me2Img from '../assets/meNoBg.png';
-// eslint-disable-next-line no-unused-vars
-import { useEffect, useState } from "react";
+import { motion } from 'framer-motion';
+import { useState } from "react";
 
 const Home = () => {
   const [email, setEmail] = useState('');
