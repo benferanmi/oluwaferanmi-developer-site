@@ -1,160 +1,222 @@
-import './css/skllList.css';
-// eslint-disable-next-line no-unused-vars
-import { delay, motion } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import { motion, useInView } from 'framer-motion';
+import { Code, Database, Globe, Wrench } from 'lucide-react';
 
-const SkillList = () => {
+const skillArray = [
+  { id: 1, name: 'HTML', percentage: 100, category: 'frontend' },
+  { id: 2, name: 'CSS', percentage: 100, category: 'frontend' },
+  { id: 3, name: 'React (JavaScript)', percentage: 100, category: 'frontend' },
+  { id: 4, name: 'Next.js (JavaScript)', percentage: 100, category: 'frontend' },
+  { id: 5, name: 'Node.js (JavaScript)', percentage: 90, category: 'backend' },
+  { id: 6, name: 'Express.js (JavaScript)', percentage: 90, category: 'backend' },
+  { id: 7, name: 'GIT', percentage: 100, category: 'tools' },
+  { id: 8, name: 'Php', percentage: 100, category: 'backend' },
+  { id: 9, name: 'MySQLi', percentage: 100, category: 'database' },
+  { id: 10, name: 'MongoDb', percentage: 90, category: 'database' },
+  { id: 11, name: 'WordPress (CMS)', percentage: 100, category: 'cms' },
+  { id: 12, name: 'Webflow', percentage: 100, category: 'cms' },
+  { id: 16, name: 'Bubble.io', percentage: 100, category: 'cms' },
+  { id: 13, name: 'GoDaddy', percentage: 100, category: 'tools' },
+  { id: 14, name: 'Redux', percentage: 100, category: 'frontend' },
+  { id: 15, name: 'Elementor Page Builder', percentage: 100, category: 'cms' },
+];
 
-    const skillArray = [
-        {
-            id: 1,
-            name: 'HTML',
-            percentage: 100
-        },
-        {
-            id: 2,
-            name: 'CSS',
-            percentage: 100
-        },
-        {
-            id: 3,
-            name: 'React (JavaScript)',
-            percentage: 100
-        },
-        {
-            id: 4,
-            name: 'Next.js (JavaScript)',
-            percentage: 100
-        },
-        {
-            id: 5,
-            name: 'Node.js (JavaScript)',
-            percentage: 90
-        },
-        {
-            id: 6,
-            name: 'Express.js (JavaScript)',
-            percentage: 90
-        },
-        {
-            id: 7,
-            name: 'GIT',
-            percentage: 100
-        },
-        {
-            id: 8,
-            name: 'Php',
-            percentage: 100
-        },
-        {
-            id: 9,
-            name: 'MySQLi',
-            percentage: 100
-        },
-        {
-            id: 10,
-            name: 'MongoDb',
-            percentage: 90
-        },
-        {
-            id: 11,
-            name: 'WordPress (CMS)',
-            percentage: 100
-        },
-        {
-            id: 12,
-            name: 'Webflow',
-            percentage: 100
-        },
-        {
-            id: 16,
-            name: 'Bubble.io',
-            percentage: 100
-        },
-        {
-            id: 13,
-            name: 'GoDaddy',
-            percentage: 100
-        },
-        {
-            id: 14,
-            name: 'Redux',
-            percentage: 100
-        },
-        {
-            id: 15,
-            name: 'Elementor Page Builder',
-            percentage: 100
-        },
+// eslint-disable-next-line react/prop-types
+const SkillCard = ({ skill, index }) => {
+  const [isVisible, setIsVisible] = useState(false);
+  const cardRef = React.useRef(null);
+  const isInView = useInView(cardRef, { once: true, threshold: 0.1 });
 
-    ]
+  useEffect(() => {
+    if (isInView) {
+      const timer = setTimeout(() => setIsVisible(true), index * 100);
+      return () => clearTimeout(timer);
+    }
+  }, [isInView, index]);
 
-    const fadeInAnimationsVariants = {
-        initial: {
-            opacity: 0,
-            y: 100,
-        },
-        animate: (index) => ({
-            opacity: 1,
-            y: 0,
-            transition: {
-                delay: 0.08 * index
-            }
-        }),
-    };
+  const getCategoryIcon = (category) => {
+    switch (category) {
+      case 'frontend':
+      case 'backend':
+        return <Code className="w-5 h-5" />;
+      case 'database':
+        return <Database className="w-5 h-5" />;
+      case 'cms':
+        return <Globe className="w-5 h-5" />;
+      case 'tools':
+        return <Wrench className="w-5 h-5" />;
+      default:
+        return <Code className="w-5 h-5" />;
+    }
+  };
 
-    return (
-        <div >
-            <div>
-                <div className="ap-head">
-                    <h1 style={{ fontSize: '5em', background: 'var(--text-clip-bg)' }} className='text-clip'>Skills</h1>
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6" width={20} height={20}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-                    </svg>
+  const getCategoryColor = (category) => {
+    switch (category) {
+      case 'frontend':
+        return 'from-cyan-400 to-blue-500';
+      case 'backend':
+        return 'from-emerald-400 to-teal-500';
+      case 'database':
+        return 'from-purple-400 to-pink-500';
+      case 'cms':
+        return 'from-orange-400 to-red-500';
+      case 'tools':
+        return 'from-yellow-400 to-orange-500';
+      default:
+        return 'from-gray-400 to-gray-500';
+    }
+  };
 
-                    <h2></h2>
-                </div>
-
-
-                <div className="ap-skills">
-                    <div className="ap-skill">
-                        <div className="ap-grid">
-
-
-                            {
-                                skillArray?.map((items, index) => {
-                                    return (
-
-                                        <motion.div className="ap-each" key={index} variants={fadeInAnimationsVariants} initial='initial'
-                                            whileInView="animate"
-                                            viewport={{
-                                                once: true,
-                                            }}
-                                            custom={index}
-                                        >
-                                            <p>{items.name}</p>
-
-                                            <div className="ap-progress">
-                                                <div className="ap-bar">
-                                                    <div className="ap-b-bg"></div>
-                                                    <div className="ap-b-overlay" style={{ width: `${items.percentage}%` }}></div>
-                                                    <div className="ap-b-text">
-                                                        {items.percentage}%
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </motion.div>
-                                    );
-                                })
-                            }
-
-
-
-                        </div>
-                    </div>
-                </div>
-            </div>
+  return (
+    <motion.div
+      ref={cardRef}
+      initial={{ opacity: 0, y: 50, scale: 0.9 }}
+      animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
+      transition={{ duration: 0.6, delay: index * 0.1, type: "spring", stiffness: 100 }}
+      whileHover={{ 
+        scale: 1.05, 
+        rotateY: 5,
+        boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5)"
+      }}
+      className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-xl p-6 border border-slate-700 shadow-xl backdrop-blur-sm relative overflow-hidden group"
+    >
+      {/* Decorative elements */}
+      <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-white/5 to-transparent rounded-full -translate-y-10 translate-x-10"></div>
+      <div className="absolute bottom-0 left-0 w-16 h-16 bg-gradient-to-tr from-white/5 to-transparent rounded-full translate-y-8 -translate-x-8"></div>
+      
+      {/* Skill header */}
+      <div className="flex items-center justify-between mb-4">
+        <div className="flex items-center space-x-3">
+          <div className={`p-2 rounded-lg bg-gradient-to-r ${getCategoryColor(skill.category)} shadow-lg`}>
+            {getCategoryIcon(skill.category)}
+          </div>
+          <h3 className="text-lg font-semibold text-white group-hover:text-cyan-300 transition-colors duration-300">
+            {skill.name}
+          </h3>
         </div>
-    )
-}
+        <motion.span 
+          className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500"
+          animate={isVisible ? { scale: [1, 1.1, 1] } : {}}
+          transition={{ duration: 0.6, delay: index * 0.1 + 0.5 }}
+        >
+          {skill.percentage}%
+        </motion.span>
+      </div>
 
-export default SkillList;
+      {/* Progress bar */}
+      <div className="relative">
+        <div className="w-full bg-slate-700 rounded-full h-3 overflow-hidden shadow-inner">
+          <motion.div
+            className={`h-full bg-gradient-to-r ${getCategoryColor(skill.category)} rounded-full shadow-lg relative`}
+            initial={{ width: 0 }}
+            animate={isVisible ? { width: `${skill.percentage}%` } : {}}
+            transition={{ duration: 1.2, delay: index * 0.1 + 0.3, ease: "easeOut" }}
+          >
+            {/* Animated shine effect */}
+            <motion.div
+              className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
+              animate={{ x: ['-100%', '100%'] }}
+              transition={{ duration: 2, repeat: Infinity, delay: index * 0.1 + 1 }}
+            />
+          </motion.div>
+        </div>
+      </div>
+
+      {/* Skill level indicator */}
+      <div className="mt-3 flex justify-between items-center">
+        <span className="text-sm text-slate-400 capitalize">{skill.category}</span>
+        <div className="flex space-x-1">
+          {[...Array(5)].map((_, i) => (
+            <motion.div
+              key={i}
+              className={`w-2 h-2 rounded-full ${
+                i < Math.floor(skill.percentage / 20) 
+                  ? `bg-gradient-to-r ${getCategoryColor(skill.category)}` 
+                  : 'bg-slate-600'
+              }`}
+              initial={{ scale: 0 }}
+              animate={isVisible ? { scale: 1 } : {}}
+              transition={{ duration: 0.3, delay: index * 0.1 + 0.8 + i * 0.1 }}
+            />
+          ))}
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
+export default function SkillsShowcase() {
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-navy-900 to-slate-800" style={{ backgroundColor: '#1e293b' }}>
+      {/* Header section */}
+      <div className="relative py-20 px-4">
+        <div className="max-w-7xl mx-auto text-center">
+          <motion.div
+            initial={{ opacity: 0, y: -50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, type: "spring", stiffness: 100 }}
+            className="mb-4"
+          >
+            <h1 className="text-5xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 mb-2">
+              Technical Skills
+            </h1>
+            <div className="w-32 h-1 bg-gradient-to-r from-cyan-400 to-blue-500 mx-auto rounded-full"></div>
+          </motion.div>
+          
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed"
+          >
+            A comprehensive overview of my technical expertise across various technologies and frameworks
+          </motion.p>
+        </div>
+
+        {/* Floating decorative elements */}
+        <div className="absolute top-10 left-10 w-4 h-4 bg-cyan-400 rounded-full animate-pulse"></div>
+        <div className="absolute top-20 right-20 w-3 h-3 bg-blue-500 rounded-full animate-pulse delay-1000"></div>
+        <div className="absolute bottom-10 left-20 w-2 h-2 bg-purple-500 rounded-full animate-pulse delay-2000"></div>
+      </div>
+
+      {/* Skills grid */}
+      <div className="max-w-7xl mx-auto px-4 pb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          {skillArray.map((skill, index) => (
+            <SkillCard key={skill.id} skill={skill} index={index} />
+          ))}
+        </div>
+      </div>
+
+      {/* Footer stats */}
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+        className="bg-slate-800/50 backdrop-blur-sm border-t border-slate-700 py-12"
+      >
+        <div className="max-w-4xl mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+            <div>
+              <div className="text-4xl font-bold text-cyan-400 mb-2">{skillArray.length}</div>
+              <div className="text-slate-300">Technologies</div>
+            </div>
+            <div>
+              <div className="text-4xl font-bold text-blue-500 mb-2">
+                {Math.round(skillArray.reduce((acc, skill) => acc + skill.percentage, 0) / skillArray.length)}%
+              </div>
+              <div className="text-slate-300">Average Proficiency</div>
+            </div>
+            <div>
+              <div className="text-4xl font-bold text-purple-500 mb-2">
+                {skillArray.filter(skill => skill.percentage === 100).length}
+              </div>
+              <div className="text-slate-300">Mastered Skills</div>
+            </div>
+          </div>
+        </div>
+      </motion.div>
+    </div>
+  );
+}

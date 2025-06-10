@@ -33,7 +33,7 @@ export const Header = () => {
     const { height } = useDimensions(containerRef);
 
     return (
-        <div>
+        <>
             <div className="addsfdf" style={{ position: 'fixed', left: 'auto', right: 'auto', width: '100%', background: 'linear-gradient(90deg, #00002c, #00001a, #000000, #000000, #000000)', zIndex: '99999999999999' }}>
                 <div className="desktop-nav">
                     <div className="desktop-menu">
@@ -68,7 +68,6 @@ export const Header = () => {
                     <MenuToggle toggle={() => toggleOpen()} />
                 </motion.nav>
             </div>
-        </div >
-
+        </>
     );
 };

@@ -1,12 +1,11 @@
 import "../css/style.css";
 import img from "../assets/gif 2.gif";
 import { Link } from "react-router-dom";
-import PrevWork from "../components/PrevWork";
 import { Helmet } from "react-helmet";
-import SkillList from '../components/SkillList'
 import me2Img from '../assets/meNoBg.png';
-import { motion } from 'framer-motion';
 import { useState } from "react";
+import PortfolioSlider from "../components/pages/PortfolioSlider";
+import SkillsShowcase from "../components/SkillList";
 
 const Home = () => {
   const [email, setEmail] = useState('');
@@ -118,18 +117,18 @@ const Home = () => {
                 <h1 className="about-cont-head text-clip">About Me</h1>
               </span>
               <p>
-                I am a Multitalented Front end developer with experience in website development and designing industry. Demonstrated excellent skills in React js, NExt js, Express, Node JavaScript......
-                I am also a pro at using content managment system such as wordpress, wix, webflow...
-                {/* True team player with strengths in adaptability and accuracy.  */}
-                Innovative and technically-astute website designer well-versed in analyzing user needs and developing software to precisely meet diverse needs.
+                I am a Full Stack website developer with expertise in latest web technologies. I specialize in creating interactive and visually appealing user interfaces that deliver a seamless user experience. Additionally, I am proficient in utilizing content management systems (CMS) like WordPress to build dynamic and customizable websites.
 
-                {/* Demonstrates mastery of multiple programming languages and proactively keeps up with industry trends.
-                Driven to wear many programming hats with expertise in creating everything from new applications to new operating systems. */}
-
-                {/* Eager to
-                contribute to team success through hard work, attention to detail and
-                excellent organizational skills. Clear understanding of Task and
-                training in Skill. Motivated to learn, grow and excel in Industry. */}
+                Skills and Technologies
+                Front-End Development: ReactJS, NextJS, Tailwind, HTML5, CSS3, JavaScript
+                Back-End Development: Express, Node, Typescript
+                JavaScript Frameworks: React, Redux, Next
+                UI/UX Design: Responsive Design, Wireframing, Prototyping
+                CMS: WordPress, Drupal, Website Builer
+                Version Control: Git, GitHub
+                Build Tools: Webpack, Babel, vite
+                Testing: Jest, Enzyme
+                Other Tools: npm, yarn, nodemon
               </p>
 
 
@@ -184,12 +183,12 @@ const Home = () => {
       </div>
 
       <div className="skill">
-        <SkillList />
+        <SkillsShowcase />
       </div>
 
       <div className="works-section main-cont">
         <div className="portfolios" >
-          <PrevWork sliceValue={4} />
+          <PortfolioSlider />
         </div>
       </div>
 

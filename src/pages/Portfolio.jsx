@@ -1,5 +1,5 @@
 import Footer from "../components/Footer";
-import PrevWork from "../components/PrevWork";
+import PrevWork from "../components/CompletePortfolioPage";
 import '../css/portfolio.css'
 import PortGif from '../assets/ports.gif'
 
