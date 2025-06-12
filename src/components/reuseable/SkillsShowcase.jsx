@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Code, Database, Globe, Wrench } from 'lucide-react';
@@ -73,8 +74,8 @@ const SkillCard = ({ skill, index }) => {
       initial={{ opacity: 0, y: 50, scale: 0.9 }}
       animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
       transition={{ duration: 0.6, delay: index * 0.1, type: "spring", stiffness: 100 }}
-      whileHover={{ 
-        scale: 1.05, 
+      whileHover={{
+        scale: 1.05,
         rotateY: 5,
         boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5)"
       }}
@@ -83,7 +84,7 @@ const SkillCard = ({ skill, index }) => {
       {/* Decorative elements */}
       <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-white/5 to-transparent rounded-full -translate-y-10 translate-x-10"></div>
       <div className="absolute bottom-0 left-0 w-16 h-16 bg-gradient-to-tr from-white/5 to-transparent rounded-full translate-y-8 -translate-x-8"></div>
-      
+
       {/* Skill header */}
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center space-x-3">
@@ -94,7 +95,7 @@ const SkillCard = ({ skill, index }) => {
             {skill.name}
           </h3>
         </div>
-        <motion.span 
+        <motion.span
           className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500"
           animate={isVisible ? { scale: [1, 1.1, 1] } : {}}
           transition={{ duration: 0.6, delay: index * 0.1 + 0.5 }}
@@ -129,11 +130,10 @@ const SkillCard = ({ skill, index }) => {
           {[...Array(5)].map((_, i) => (
             <motion.div
               key={i}
-              className={`w-2 h-2 rounded-full ${
-                i < Math.floor(skill.percentage / 20) 
-                  ? `bg-gradient-to-r ${getCategoryColor(skill.category)}` 
+              className={`w-2 h-2 rounded-full ${i < Math.floor(skill.percentage / 20)
+                  ? `bg-gradient-to-r ${getCategoryColor(skill.category)}`
                   : 'bg-slate-600'
-              }`}
+                }`}
               initial={{ scale: 0 }}
               animate={isVisible ? { scale: 1 } : {}}
               transition={{ duration: 0.3, delay: index * 0.1 + 0.8 + i * 0.1 }}
@@ -162,7 +162,7 @@ export default function SkillsShowcase() {
             </h1>
             <div className="w-32 h-1 bg-gradient-to-r from-cyan-400 to-blue-500 mx-auto rounded-full"></div>
           </motion.div>
-          
+
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

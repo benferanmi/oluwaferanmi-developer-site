@@ -94,7 +94,11 @@
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 }
-
+@theme {
+  --color-gl: #f87537;
+  --color-gr: #eee044;
+  --color-gm: #fba81f;
+}
 
 .neon-text {
   text-shadow: 0 0 5px rgba(0, 255, 255, 0.7), 0 0 10px rgba(0, 255, 255, 0.5);
@@ -128,3 +132,4 @@
   box-shadow: 0 0 20px rgba(37, 211, 102, 0.8);
   transform: translateY(-2px);
 }
+
