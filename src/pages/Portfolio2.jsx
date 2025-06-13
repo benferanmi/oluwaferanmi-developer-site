@@ -1,4 +1,3 @@
-import Footer from "../components/Footer";
 import PrevWork from "../components/CompletePortfolioPage";
 import '../css/portfolio.css'
 import PortGif from '../assets/ports.gif'
@@ -22,7 +21,7 @@ const Portfolio = () => {
 
                             <br />
 
-                            <img src={PortGif} className="bp-img" />
+                            <img src={PortGif} className="Benferanmi Special Gifs" />
                         </div>
 
                         <div className="bp-bc-right" >

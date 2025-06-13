@@ -6,11 +6,14 @@ import Portfolio from './pages/Portfolio.jsx'
 import Footer from './components/navigation/Footer.jsx'
 import Home from './pages/Home.jsx'
 import Contact from './pages/Contact.jsx'
+import { Toaster } from 'react-hot-toast'
 
 function App() {
 
   return (
     <>
+      <Toaster />
+
       <div className='block relative h-[130px]'>
         <Header />
       </div>

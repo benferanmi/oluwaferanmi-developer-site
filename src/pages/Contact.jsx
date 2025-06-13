@@ -1,7 +1,8 @@
 import { useState } from "react";
-import emailjs from "@emailjs/browser";
 import { Mail, Phone, MapPin, Send, User, MessageSquare } from 'lucide-react';
 import toast from "react-hot-toast";
+import { useForm } from '@formspree/react';
+
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -10,8 +11,15 @@ export default function Contact() {
     email: '',
     description: ''
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
+  const [state, handleSubmit] = useForm("xpwrdnka");
+
+  const validateBeforeSubmit = (e) => {
+    if (!formData.firstName || !formData.lastName || !formData.email || !formData.description) {
+      e.preventDefault(); // IMPORTANT: Stop default submission
+      toast.error("All fields are required");
+    }
+  };
+
 
   const handleChange = (e) => {
     setFormData({
@@ -20,42 +28,6 @@ export default function Contact() {
     });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-
-    if (!formData.firstName || !formData.lastName || formData.email || formData.description) {
-      return toast.error("All fields are required"),
-        setIsSubmitting(false)
-    }
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitted(true);
-      setFormData({ firstName: '', lastName: '', email: '', description: '' });
-
-      emailjs
-        .sendForm(
-          "service_cted9nk",
-          "template_h6oeel3",
-          formData,
-          "mW8WFQdas_Oc08y-M"
-        )
-        .then(
-          (result) => {
-            console.log(result.text);
-          },
-          (error) => {
-            console.log(error.text);
-          }
-        );
-
-      setTimeout(() => setSubmitted(false), 3000);
-    }, 1500);
-
-
-
-  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 py-20 px-4">
@@ -129,13 +101,15 @@ export default function Contact() {
           {/* Contact Form */}
           <div className="relative">
             <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-purple-600/10 rounded-3xl blur-2xl"></div>
-            <div className="relative bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-8 shadow-2xl">
+            <form
+              onSubmit={(e) => { validateBeforeSubmit(e); handleSubmit(e); }}
+              className="relative bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-8 shadow-2xl">
               <h2 className="text-2xl font-bold text-white mb-6 flex items-center">
                 <MessageSquare className="w-6 h-6 mr-2 text-blue-400" />
                 Send us a Message
               </h2>
 
-              {submitted && (
+              {state.succeeded && (
                 <div className="mb-6 p-4 bg-green-500/20 border border-green-500/30 rounded-xl">
                   <p className="text-green-400 font-medium">
                     ✓ Message sent successfully! We&apos;ll get back to you soon.
@@ -199,10 +173,10 @@ export default function Contact() {
                 <button
                   type="button"
                   onClick={handleSubmit}
-                  disabled={isSubmitting}
+                  disabled={state.submitting}
                   className="w-full bg-gradient-to-r from-gl to-gr hover:from-gm hover:to-gl text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center space-x-2"
                 >
-                  {isSubmitting ? (
+                  {state.submitting ? (
                     <>
                       <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
                       <span>Sending...</span>
@@ -215,7 +189,7 @@ export default function Contact() {
                   )}
                 </button>
               </div>
-            </div>
+            </form>
           </div>
         </div>
 

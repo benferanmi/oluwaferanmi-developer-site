@@ -2,7 +2,8 @@ import { useState, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Send, User, Mail, FileText, MessageSquare, Sparkles } from 'lucide-react';
 import { contactImg } from '../../assets';
-import emailjs from "@emailjs/browser";
+import { useForm, ValidationError } from '@formspree/react';
+import toast from 'react-hot-toast';
 
 
 
@@ -11,31 +12,18 @@ export default function ContactSection() {
   const [email, setEmail] = useState('');
   const [subject, setSubject] = useState('');
   const [details, setDetails] = useState('');
-
+  const [state, handleSubmit] = useForm("xpwrdnka");
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, threshold: 0.1 });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const formData = { name, email, subject, details }
 
-    emailjs
-      .sendForm(
-        "service_cted9nk",
-        "template_h6oeel3",
-        formData,
-        "mW8WFQdas_Oc08y-M"
-      )
-      .then(
-        (result) => {
-          console.log(result.text);
-        },
-        (error) => {
-          console.log(error.text);
-        }
-      );
-
+  const validateBeforeSubmit = (e) => {
+    if (!name || !email || !subject || !details) {
+      e.preventDefault(); // IMPORTANT: Stop default submission
+      toast.error("All fields are required");
+    }
   };
+
 
   return (
     <div ref={ref} className="min-h-screen bg-gradient-to-br from-slate-900 via-navy-900 to-slate-800 py-20 px-4" style={{ backgroundColor: '#1e293b' }}>
@@ -74,7 +62,7 @@ export default function ContactSection() {
               <div className="relative overflow-hidden rounded-2xl shadow-2xl group-hover:shadow-cyan-500/25 transition-all duration-500">
                 <div className="aspect-[4/5] bg-gradient-to-br from-slate-700 via-slate-600 to-slate-800 relative">
                   {/* Placeholder for actual image */}
-                  <img src={contactImg} alt='' />
+                  <img src={contactImg} alt='Opafunco Benjamin Contact Us Image' />
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="text-center">
                       <Sparkles className="w-16 h-16 text-cyan-400 mx-auto mb-4 animate-pulse" />
@@ -164,14 +152,15 @@ export default function ContactSection() {
               </motion.p>
             </div>
 
-            {/* Form */}
-            <motion.form
-              onSubmit={handleSubmit}
-              initial={{ opacity: 0, y: 50 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="space-y-6"
-            >
+
+            {state.succeeded ? <div className='text-xl text-white px-4 p-2 block text-center relative w-full'>Thanks, Your response have been received, We will get in touch with you as soon as possible.
+              <Sparkles /> </div> : <motion.form
+                initial={{ opacity: 0, y: 50 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                onSubmit={(e) => { validateBeforeSubmit(e); handleSubmit(e); }}
+                className="space-y-6"
+              >
               {/* Full Name */}
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
@@ -185,11 +174,17 @@ export default function ContactSection() {
                 </label>
                 <input
                   type="text"
-                  name="FullName"
+                  id='name'
+                  name="name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   className="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-400 focus:outline-none focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20 transition-all duration-300 backdrop-blur-sm"
                   placeholder="Enter your full name"
+                />
+                <ValidationError
+                  prefix="Name"
+                  field="name"
+                  errors={state.errors}
                 />
                 <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-cyan-400/0 to-blue-500/0 group-focus-within:from-cyan-400/10 group-focus-within:to-blue-500/10 transition-all duration-300 pointer-events-none" />
               </motion.div>
@@ -206,12 +201,18 @@ export default function ContactSection() {
                   Email
                 </label>
                 <input
+                  id='email'
                   type="email"
-                  name="Email"
+                  name="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-400 focus:outline-none focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20 transition-all duration-300 backdrop-blur-sm"
                   placeholder="Enter your email address"
+                />
+                <ValidationError
+                  prefix="Email"
+                  field="email"
+                  errors={state.errors}
                 />
                 <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-cyan-400/0 to-blue-500/0 group-focus-within:from-cyan-400/10 group-focus-within:to-blue-500/10 transition-all duration-300 pointer-events-none" />
               </motion.div>
@@ -229,11 +230,17 @@ export default function ContactSection() {
                 </label>
                 <input
                   type="text"
-                  name="Subject"
+                  id='subject'
+                  name="subject"
                   value={subject}
                   onChange={(e) => setSubject(e.target.value)}
                   className="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-400 focus:outline-none focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20 transition-all duration-300 backdrop-blur-sm"
                   placeholder="Project subject or title"
+                />
+                <ValidationError
+                  prefix="Subject"
+                  field="subject"
+                  errors={state.errors}
                 />
                 <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-cyan-400/0 to-blue-500/0 group-focus-within:from-cyan-400/10 group-focus-within:to-blue-500/10 transition-all duration-300 pointer-events-none" />
               </motion.div>
@@ -250,12 +257,18 @@ export default function ContactSection() {
                   Project Details
                 </label>
                 <textarea
-                  name="ProjectDetails"
+                  name="details"
+                  id='details'
                   value={details}
                   onChange={(e) => setDetails(e.target.value)}
                   rows={5}
                   className="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-400 focus:outline-none focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20 transition-all duration-300 backdrop-blur-sm resize-none"
                   placeholder="Describe your project requirements, goals, timeline, and any specific features you need..."
+                />
+                <ValidationError
+                  prefix="Details"
+                  field="details"
+                  errors={state.errors}
                 />
                 <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-cyan-400/0 to-blue-500/0 group-focus-within:from-cyan-400/10 group-focus-within:to-blue-500/10 transition-all duration-300 pointer-events-none" />
               </motion.div>
@@ -263,6 +276,7 @@ export default function ContactSection() {
               {/* Submit Button */}
               <motion.button
                 type="submit"
+                disabled={state.submitting}
                 initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: 1.0 }}
@@ -280,7 +294,10 @@ export default function ContactSection() {
                   transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
                 />
               </motion.button>
-            </motion.form>
+            </motion.form>}
+
+            {/* Form */}
+
 
             {/* Contact Info */}
             <motion.div
