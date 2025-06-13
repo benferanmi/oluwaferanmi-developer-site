@@ -257,15 +257,17 @@ const Home = () => {
                     className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center hover:bg-blue-500 hover:text-white transition-all duration-300 group"
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label="Visit my facebook page"
                   >
                     <Facebook />
                   </a>
 
                   <a
-                    href="https://www.linkedin.com/in/opafunso-benjamin-397b241b2"
+                    href="https://www.linkedin.com/in/benferanmi"
                     className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all duration-300 group"
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label="Visit my Linkedin profile"
                   >
                     <Linkedin />
                   </a>
@@ -275,6 +277,7 @@ const Home = () => {
                     className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center hover:bg-gray-800 hover:text-white transition-all duration-300 group"
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label="Visit my Github Profile"
                   >
                     <Github />
                   </a>

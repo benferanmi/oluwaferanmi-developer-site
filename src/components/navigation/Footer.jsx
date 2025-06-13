@@ -33,9 +33,9 @@ export default function Footer() {
           {/* Left section - Brand & Copyright */}
           <div className="text-center lg:text-left">
             <div className="mb-6">
-              <h3 className="text-2xl font-bold bg-gradient-to-r from-orange-400 to-gl bg-clip-text text-transparent mb-2">
+              <h4 className="text-2xl font-bold bg-gradient-to-r from-orange-400 to-gl bg-clip-text text-transparent mb-2">
                 Benferanmi
-              </h3>
+              </h4>
               <p className="text-slate-300 text-sm leading-relaxed">
                 Crafting digital experiences with passion and precision.
                 Let&apos;s build something amazing together.
@@ -78,7 +78,7 @@ export default function Footer() {
 
               {/* Facebook */}
               <a
-                href="https://www.facebook.com/classicoluwaferanmi"
+                href="https://www.facebook.com/classoluwaferanmi"
                 className="group relative p-3 bg-white/5 hover:bg-blue-600/20 border border-white/10 hover:border-blue-500/30 rounded-xl transition-all duration-300 transform hover:scale-110 hover:shadow-lg"
                 aria-label="Visit our Facebook page"
               >

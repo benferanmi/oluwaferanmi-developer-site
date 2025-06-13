@@ -62,7 +62,7 @@ export default function ContactSection() {
               <div className="relative overflow-hidden rounded-2xl shadow-2xl group-hover:shadow-cyan-500/25 transition-all duration-500">
                 <div className="aspect-[4/5] bg-gradient-to-br from-slate-700 via-slate-600 to-slate-800 relative">
                   {/* Placeholder for actual image */}
-                  <img src={contactImg} alt='Opafunco Benjamin Contact Us Image' />
+                  <img src={contactImg} className='w-full h-full' alt='Opafunco Benjamin Contact Us Image' />
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="text-center">
                       <Sparkles className="w-16 h-16 text-cyan-400 mx-auto mb-4 animate-pulse" />

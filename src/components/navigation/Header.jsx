@@ -103,7 +103,7 @@ const Header = () => {
                         <div className="flex items-center justify-between h-20">
                             {/* Logo */}
                             <div className="flex-shrink-0 transform hover:scale-105 transition-transform duration-200">
-                                <a href="/" className="flex items-center space-x-2 w-35">
+                                <a href="/" aria-label='Benferanmi logo image' className="flex items-center space-x-2 w-35">
                                     <LogoSvg />
                                 </a>
                             </div>
@@ -126,7 +126,7 @@ const Header = () => {
                                 </a>
                                 <a
                                     href="/contact"
-                                    className="bg-gl hover:bg-gm text-white px-6 py-2 rounded-full font-medium transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-blue-500/25"
+                                    className="bg-gm hover:bg-gm font-bold text-slate-800 px-6 py-2 rounded-full transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-blue-500/25"
                                 >
                                     Contact
                                 </a>

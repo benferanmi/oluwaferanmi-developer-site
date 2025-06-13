@@ -11,7 +11,7 @@ import Header from './components/navigation/Header.jsx'
 function App() {
 
   return (
-    <main className='bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900'>
+    <main className='bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 w-full overflow-hidden block relative'>
       <Toaster />
 
       <div className='block relative h-[130px]'>

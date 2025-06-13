@@ -91,9 +91,9 @@ const SkillCard = ({ skill, index }) => {
           <div className={`p-2 rounded-lg bg-gradient-to-r ${getCategoryColor(skill.category)} shadow-lg`}>
             {getCategoryIcon(skill.category)}
           </div>
-          <h3 className="text-lg font-semibold text-white group-hover:text-cyan-300 transition-colors duration-300">
+          <h4 className="text-lg font-semibold text-white group-hover:text-cyan-300 transition-colors duration-300">
             {skill.name}
-          </h3>
+          </h4>
         </div>
         <motion.span
           className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500"
@@ -131,8 +131,8 @@ const SkillCard = ({ skill, index }) => {
             <motion.div
               key={i}
               className={`w-2 h-2 rounded-full ${i < Math.floor(skill.percentage / 20)
-                  ? `bg-gradient-to-r ${getCategoryColor(skill.category)}`
-                  : 'bg-slate-600'
+                ? `bg-gradient-to-r ${getCategoryColor(skill.category)}`
+                : 'bg-slate-600'
                 }`}
               initial={{ scale: 0 }}
               animate={isVisible ? { scale: 1 } : {}}
@@ -180,8 +180,8 @@ export default function SkillsShowcase() {
       </div>
 
       {/* Skills grid */}
-      <div className="max-w-7xl mx-auto px-4 pb-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      <div className="w-[95%] md:max-w-7xl mx-auto px-4 pb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 w-full overflow-hidden">
           {skillArray.map((skill, index) => (
             <SkillCard key={skill.id} skill={skill} index={index} />
           ))}
