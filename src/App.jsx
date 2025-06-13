@@ -1,17 +1,17 @@
 import './App.css'
 import { Routes, Route } from 'react-router-dom'
 
-import { Header } from './components/navigation/Header.jsx'
 import Portfolio from './pages/Portfolio.jsx'
 import Footer from './components/navigation/Footer.jsx'
 import Home from './pages/Home.jsx'
 import Contact from './pages/Contact.jsx'
 import { Toaster } from 'react-hot-toast'
+import Header from './components/navigation/Header.jsx'
 
 function App() {
 
   return (
-    <>
+    <main className='bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900'>
       <Toaster />
 
       <div className='block relative h-[130px]'>
@@ -31,7 +31,7 @@ function App() {
       <div>
         <Footer />
       </div>
-    </>
+    </main>
   )
 }
 

@@ -239,6 +239,7 @@ const PortfolioSlider = () => {
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex items-center gap-6 py-10">
         {/* Prev/Next Buttons */}
         <button
+        aria-label="Previous Slide"
           onClick={prevSlide}
           className="p-3 bg-slate-800/50 backdrop-blur-sm border border-slate-600/50 text-white rounded-full hover:bg-slate-700/50 transition-all duration-300"
           onMouseEnter={() => setIsAutoPlay(false)}
@@ -251,9 +252,10 @@ const PortfolioSlider = () => {
         <div className="flex gap-2">
           {featuredProjects.map((_, index) => (
             <button
+            aria-label="Go to Slide"
               key={index}
               onClick={() => goToSlide(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentIndex
+              className={`w-3 m-5 md:m-10 h-3 rounded-full transition-all duration-300 ${index === currentIndex
                 ? `bg-gradient-to-r ${currentProject.gradient} scale-125`
                 : 'bg-slate-600 hover:bg-slate-500'
                 }`}
@@ -265,6 +267,7 @@ const PortfolioSlider = () => {
 
         <button
           onClick={nextSlide}
+          aria-label="Next Slide"
           className="p-3 bg-slate-800/50 backdrop-blur-sm border border-slate-600/50 text-white rounded-full hover:bg-slate-700/50 transition-all duration-300"
           onMouseEnter={() => setIsAutoPlay(false)}
           onMouseLeave={() => setIsAutoPlay(true)}

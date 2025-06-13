@@ -25,6 +25,7 @@ const DownloadCvButton = () => {
     return (
         <div>
             <button
+            aria-label="Download Cv"
                 onClick={downloadCv}
                 disabled={isDownloading}
                 className="group relative bg-gradient-to-r from-orange-500 to-gl hover:from-orange-600 hover:to-gl text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none border-2 border-orange-500/20 hover:border-orange-400/40"

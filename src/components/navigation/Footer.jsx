@@ -8,7 +8,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className=" relative bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 text-white overflow-hidden">
+    <footer className=" relative bg-gradient-to-br from-slate-900 via-navy-900 to-slate-800 text-white overflow-hidden">
       {/* Background decorative elements */}
       <div className="absolute inset-0">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl"></div>
@@ -16,8 +16,9 @@ export default function Footer() {
       </div>
 
       {/* Scroll to top button */}
-      <div className="absolute bottom-5 right-5 transform -translate-x-1/2 -translate-y-1/2">
+      <div className="absolute bottom-2 right-2 lg:bottom-5 lg:right-5 transform -translate-x-1/2 -translate-y-1/2">
         <button
+          aria-label='Scroll to top'
           onClick={scrollToTop}
           className="bg-gradient-to-r from-orange-500 to-gl hover:from-orange-600 hover:to-gm p-3 rounded-full shadow-lg transition-all duration-300 transform hover:scale-110 hover:shadow-xl group"
         >
@@ -62,7 +63,7 @@ export default function Footer() {
           <div className="text-center">
             <div className="inline-block">
               <h4 className="text-lg font-semibold mb-4 text-white">Ready to Connect?</h4>
-             <DownloadCvButton />
+              <DownloadCvButton />
 
               <p className="text-slate-400 text-sm mt-3">
                 Get my latest resume and portfolio details
@@ -77,9 +78,9 @@ export default function Footer() {
 
               {/* Facebook */}
               <a
-                href="#"
+                href="https://www.facebook.com/classicoluwaferanmi"
                 className="group relative p-3 bg-white/5 hover:bg-blue-600/20 border border-white/10 hover:border-blue-500/30 rounded-xl transition-all duration-300 transform hover:scale-110 hover:shadow-lg"
-                aria-label="Facebook"
+                aria-label="Visit our Facebook page"
               >
                 <Facebook className="w-6 h-6 text-slate-300 group-hover:text-blue-400 transition-colors duration-300" />
                 <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-blue-600/20 to-blue-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -87,9 +88,9 @@ export default function Footer() {
 
               {/* GitHub */}
               <a
-                href="#"
+                href="https://github.com/benferanmi"
                 className="group relative p-3 bg-white/5 hover:bg-gray-600/20 border border-white/10 hover:border-gray-400/30 rounded-xl transition-all duration-300 transform hover:scale-110 hover:shadow-lg"
-                aria-label="GitHub"
+                aria-label="Vist our GitHub Page"
               >
                 <Github className="w-6 h-6 text-slate-300 group-hover:text-gray-300 transition-colors duration-300" />
                 <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-gray-600/20 to-gray-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -97,9 +98,9 @@ export default function Footer() {
 
               {/* LinkedIn */}
               <a
-                href="#"
+                href="https://linkedin.com/in/benferanmi"
                 className="group relative p-3 bg-white/5 hover:bg-orange-600/20 border border-white/10 hover:border-orange-500/30 rounded-xl transition-all duration-300 transform hover:scale-110 hover:shadow-lg"
-                aria-label="LinkedIn"
+                aria-label="Visit My Linkedin Profile"
               >
                 <Linkedin className="w-6 h-6 text-slate-300 group-hover:text-orange-400 transition-colors duration-300" />
                 <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-orange-600/20 to-orange-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>

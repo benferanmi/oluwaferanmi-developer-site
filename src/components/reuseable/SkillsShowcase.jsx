@@ -147,7 +147,7 @@ const SkillCard = ({ skill, index }) => {
 
 export default function SkillsShowcase() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-navy-900 to-slate-800" style={{ backgroundColor: '#1e293b' }}>
+    <div className="min-h-screen bg-inherit" >
       {/* Header section */}
       <div className="relative py-20 px-4">
         <div className="max-w-7xl mx-auto text-center">

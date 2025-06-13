@@ -327,7 +327,7 @@ const Portfolio = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
+    <div className="min-h-screen bg-inherit">
       {/* Hero Section */}
       <div className="relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_40%,rgba(59,130,246,0.1),transparent_50%)]" />
@@ -402,12 +402,14 @@ const Portfolio = () => {
               {/* View Mode */}
               <div className="flex bg-slate-900/50 border border-slate-600/50 rounded-xl p-1">
                 <button
+                  aria-label="Grid View Mode"
                   onClick={() => setViewMode('grid')}
                   className={`p-2 rounded-lg transition-all ${viewMode === 'grid' ? 'bg-cyan-500/20 text-cyan-300' : 'text-slate-400 hover:text-slate-300'}`}
                 >
                   <Grid3X3 size={18} />
                 </button>
                 <button
+                  aria-label="List View Mode"
                   onClick={() => setViewMode('list')}
                   className={`p-2 rounded-lg transition-all ${viewMode === 'list' ? 'bg-cyan-500/20 text-cyan-300' : 'text-slate-400 hover:text-slate-300'}`}
                 >

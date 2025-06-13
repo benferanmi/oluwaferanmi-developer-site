@@ -172,6 +172,7 @@ export default function Contact() {
 
                 <button
                   type="button"
+                  aria-label="Form Submission"
                   onClick={handleSubmit}
                   disabled={state.submitting}
                   className="w-full bg-gradient-to-r from-gl to-gr hover:from-gm hover:to-gl text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center space-x-2"

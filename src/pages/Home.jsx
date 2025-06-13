@@ -1,4 +1,3 @@
-import "../css/style.css";
 import { Helmet } from "react-helmet";
 import SkillsShowcase from "../components/reuseable/SkillsShowcase";
 import PortfolioSlider from "../components/reuseable/PortfolioSlider";
@@ -48,12 +47,12 @@ const Home = () => {
         <meta property="og:type" content="website" />
       </Helmet>
       <section className="bg-inherit">
-        <div className="min-h-screen w-[90%] md:[w-80%] mx-auto overflow-hidden relative">
+        <div className="h-fit py-15 md:py-0 lg:min-h-screen w-[95%] md:w-[80%] mx-auto overflow-hidden relative">
           {/* Animated background elements */}
-          <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob"></div>
-            <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-cyan-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000"></div>
-            <div className="absolute -top-40 left-40 w-80 h-80 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-4000"></div>
+          <div className=" hidden md:block absolute inset-0 overflow-hidden">
+            <div className="hidden md:block absolute -top-40 -right-40 w-80 h-80 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob"></div>
+            <div className="hidden md:blockabsolute -bottom-40 -left-40 w-80 h-80 bg-cyan-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000"></div>
+            <div className=" hidden md:block absolute -top-40 left-40 w-80 h-80 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-4000"></div>
           </div>
 
           {/* Main content */}
@@ -69,19 +68,19 @@ const Home = () => {
                 </div>
 
                 {/* Role */}
-                <h2 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent mb-4 animate-fade-in">
+                <h1 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent mb-4 animate-fade-in">
                   Website Developer
-                </h2>
+                </h1>
 
                 {/* Name */}
-                <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-tight">
+                <h2 className="text-4xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-tight">
                   OPAFUNSO
                   <br />
                   <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
                     BENJAMIN
                   </span>
                   <span className="text-purple-400">.</span>
-                </h1>
+                </h2>
 
                 {/* Description */}
                 <p className="text-gray-300 text-lg md:text-xl leading-relaxed mb-8 max-w-2xl">
@@ -93,10 +92,10 @@ const Home = () => {
                 </p>
 
                 {/* Buttons */}
-                <div className="flex flex-col sm:flex-row gap-4">
+                <div className="flex flex-wrap sm:flex-nowrap sm:flex-row gap-4">
                   <a
                     href="/contact"
-                    className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold rounded-lg hover:from-cyan-600 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-2xl group"
+                    className="inline-flex w-fit items-center justify-center px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold rounded-lg hover:from-cyan-600 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-2xl group"
                   >
                     Contact Me
                     <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -158,11 +157,11 @@ const Home = () => {
 
             {/* Image Section */}
             <div className="relative flex-shrink-0">
-              <div className="relative w-80 h-80">
+              <div className="relative w-80 h-80 hidden lg:block">
                 <img
                   src={benferanmi}
                   alt="Opafunso Benjamin Profile Image"
-                  className="w-full h-full object-cover object-top rounded-full border-8 border-gray-100 shadow-xl relative z-10"
+                  className=" w-full h-full object-cover object-top rounded-full border-8 border-gray-100 shadow-xl relative z-10"
                 />
 
                 {/* Decorative SVG Background */}
@@ -194,9 +193,9 @@ const Home = () => {
 
               {/* Header */}
               <div className="mb-8">
-                <h1 className="text-4xl lg:text-5xl font-bold text-gray-100 mb-2 bg-gradient-to-r from-orange-500 to-yellow-500 bg-clip-text ">
+                <h2 className="text-4xl lg:text-5xl font-bold text-gray-100 mb-2 bg-gradient-to-r from-orange-500 to-yellow-500 bg-clip-text ">
                   About Me
-                </h1>
+                </h2>
               </div>
 
               {/* Description */}
@@ -222,23 +221,23 @@ const Home = () => {
               <div className="mb-10">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                   <div className="text-center bg-white border border-gray-200 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
-                    <h2 className="text-4xl font-bold bg-gradient-to-r from-orange-500 to-yellow-500 bg-clip-text text-transparent mb-2">
+                    <h4 className="text-4xl font-bold bg-gradient-to-r from-orange-500 to-yellow-500 bg-clip-text text-transparent mb-2">
                       4+
-                    </h2>
+                    </h4>
                     <p className="text-black font-medium">Years of experience in Development</p>
                   </div>
 
                   <div className="text-center bg-white border border-gray-200 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
-                    <h2 className="text-4xl font-bold bg-gradient-to-r from-orange-500 to-yellow-500 bg-clip-text text-transparent mb-2">
+                    <h4 className="text-4xl font-bold bg-gradient-to-r from-orange-500 to-yellow-500 bg-clip-text text-transparent mb-2">
                       500+
-                    </h2>
+                    </h4>
                     <p className="text-black font-medium">Successfully Project Completed</p>
                   </div>
 
                   <div className="text-center bg-white border border-gray-200 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
-                    <h2 className="text-4xl font-bold bg-gradient-to-r from-orange-500 to-yellow-500 bg-clip-text text-transparent mb-2">
+                    <h4 className="text-4xl font-bold bg-gradient-to-r from-orange-500 to-yellow-500 bg-clip-text text-transparent mb-2">
                       105+
-                    </h2>
+                    </h4>
                     <p className="text-black font-medium">Global Customer</p>
                   </div>
                 </div>
