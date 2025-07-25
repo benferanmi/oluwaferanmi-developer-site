@@ -4,6 +4,7 @@ import { Routes, Route } from 'react-router-dom'
 import Portfolio from './pages/Portfolio.jsx'
 import Footer from './components/navigation/Footer.jsx'
 import Home from './pages/Home.jsx'
+import AuthPage from './pages/AuthPage.jsx'
 import Contact from './pages/Contact.jsx'
 import { Toaster } from 'react-hot-toast'
 import Header from './components/navigation/Header.jsx'
@@ -23,6 +24,9 @@ function App() {
           <Route path='/contact' element={<Contact />} />
           {/* <Route path='/blogs' element={<Blog />} /> */}
           <Route path='/prev' element={<Portfolio />} />
+          <Route path='/google-form' element={<AuthPage />} />
+          <Route path="/auth/success" element={<AuthPage />} />
+          <Route path="/auth/error" element={<AuthPage />} />
           {/* <Route path="/offers" element={<Offers />} /> */}
         </Routes>
       </main>
