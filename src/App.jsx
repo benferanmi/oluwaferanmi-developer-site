@@ -9,6 +9,7 @@ import Contact from './pages/Contact.jsx'
 import { Toaster } from 'react-hot-toast'
 import Header from './components/navigation/Header.jsx'
 import SubscriptionUpgrade from './pages/testing/SubscriptionUpgrade.jsx'
+import PaymentSuccess from './pages/testing/PaymentSuccess.jsx'
 
 function App() {
 
@@ -31,6 +32,7 @@ function App() {
           <Route path="/auth/success" element={<AuthPage />} />
           <Route path="/auth/error" element={<AuthPage />} />
           <Route path='/upgrade' element={<SubscriptionUpgrade />} />
+          <Route path='/payment-success' element={<PaymentSuccess />} />
           {/* <Route path="/offers" element={<Offers />} /> */}
         </Routes>
       </main>
