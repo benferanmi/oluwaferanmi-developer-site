@@ -8,6 +8,7 @@ import AuthPage from './pages/AuthPage.jsx'
 import Contact from './pages/Contact.jsx'
 import { Toaster } from 'react-hot-toast'
 import Header from './components/navigation/Header.jsx'
+import SubscriptionUpgrade from './pages/testing/SubscriptionUpgrade.jsx'
 
 function App() {
 
@@ -24,9 +25,12 @@ function App() {
           <Route path='/contact' element={<Contact />} />
           {/* <Route path='/blogs' element={<Blog />} /> */}
           <Route path='/prev' element={<Portfolio />} />
+
+          {/* //testing pages */}
           <Route path='/google-form' element={<AuthPage />} />
           <Route path="/auth/success" element={<AuthPage />} />
           <Route path="/auth/error" element={<AuthPage />} />
+          <Route path='/upgrade' element={<SubscriptionUpgrade />} />
           {/* <Route path="/offers" element={<Offers />} /> */}
         </Routes>
       </main>
