@@ -10,6 +10,7 @@ import { Toaster } from 'react-hot-toast'
 import Header from './components/navigation/Header.jsx'
 import SubscriptionUpgrade from './pages/testing/SubscriptionUpgrade.jsx'
 import PaymentSuccess from './pages/testing/PaymentSuccess.jsx'
+import ImageKitUploadForm from './pages/testing/ImageKitUpload.jsx'
 
 function App() {
 
@@ -33,6 +34,7 @@ function App() {
           <Route path="/auth/error" element={<AuthPage />} />
           <Route path='/upgrade' element={<SubscriptionUpgrade />} />
           <Route path='/payment-success' element={<PaymentSuccess />} />
+          <Route path='/testing/imagekit-upload' element={<ImageKitUploadForm />} />
           {/* <Route path="/offers" element={<Offers />} /> */}
         </Routes>
       </main>

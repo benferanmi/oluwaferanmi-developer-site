@@ -48,8 +48,6 @@ const SubscriptionUpgrade = () => {
                     planId: selectedPlan,
                     billingCycle: billingCycle,
                     // Add callback URL for successful payments
-                    callbackUrl: `${window.location.origin}/payment-success`,
-                    cancelUrl: `${window.location.origin}/payment-cancelled`
                 })
             });
 
