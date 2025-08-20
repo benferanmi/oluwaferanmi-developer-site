@@ -6,14 +6,14 @@ const SubscriptionUpgrade = () => {
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
     const [billingCycle, setBillingCycle] = useState('monthly');
-    const [selectedPlan, setSelectedPlan] = useState('6893a9049ae4c8bbe31e67f8');
+    const [selectedPlan, setSelectedPlan] = useState('689518ec6dc50b29ea1a4eb9');
 
     const baseUrl = 'http://localhost:5000/api';
 
     // You can add more plans here if needed
     const plans = [
         {
-            id: '6893a9049ae4c8bbe31e67f8',
+            id: '689518ec6dc50b29ea1a4eb9',
             name: 'Premium Plan',
             monthlyPrice: '₦5,000',
             yearlyPrice: '₦50,000'
