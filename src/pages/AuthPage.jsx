@@ -47,7 +47,7 @@ const AuthPage = () => {
       console.log('Processing OAuth code:', code);
 
       // Exchange the code for user data
-      const response = await fetch('http://localhost:5000/api/auth/google/exchange', {
+      const response = await fetch('https://api.staging.pelbliss.com/api/auth/google/exchange', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -56,7 +56,7 @@ const AuthPage = () => {
       });
 
       const data = await response.json();
-      
+
       // Log the complete response
       console.log('Complete OAuth Response:', data);
       console.log('Response Success:', data.success);
@@ -74,10 +74,10 @@ const AuthPage = () => {
 
         console.log('OAuth authentication successful!', userData);
         setUser(userData);
-        
+
         // Store tokens in memory (removed localStorage as per instructions)
         console.log('User data and tokens stored in memory');
-        
+
         // Clean up URL
         window.history.replaceState({}, document.title, '/');
       } else {
@@ -96,14 +96,14 @@ const AuthPage = () => {
   const handleGoogleUserSignIn = () => {
     setLoading(true);
     console.log('Redirecting to Google User OAuth...');
-    window.location.href = 'http://localhost:5000/api/auth/google/user';
+    window.location.href = 'https://api.staging.pelbliss.com/api/auth/google/user';
   };
 
   // Handle Google Sign In for Vendor
   const handleGoogleVendorSignIn = () => {
     setLoading(true);
     console.log('Redirecting to Google Vendor OAuth...');
-    window.location.href = 'http://localhost:5000/api/auth/google/vendor';
+    window.location.href = 'https://api.staging.pelbliss.com/api/auth/google/vendor';
   };
 
   // Handle regular form submission
@@ -113,10 +113,10 @@ const AuthPage = () => {
 
     try {
       const baseEndpoint = isSignUp ? 'signup' : 'signin';
-      const endpoint = `http://localhost:5000/api/auth/${userType}/${baseEndpoint}`;
-      
+      const endpoint = `https://api.staging.pelbliss.com/api/auth/${userType}/${baseEndpoint}`;
+
       console.log(`Submitting ${userType} ${baseEndpoint} to:`, endpoint);
-      
+
       const response = await fetch(endpoint, {
         method: 'POST',
         headers: {
@@ -160,11 +160,10 @@ const AuthPage = () => {
     return (
       <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4">
         <div className="bg-white rounded-2xl shadow-xl p-8 w-full max-w-md text-center">
-          <div className={`w-20 h-20 rounded-full mx-auto mb-6 flex items-center justify-center ${
-            user.userType === 'vendor' 
-              ? 'bg-gradient-to-r from-green-500 to-emerald-600' 
+          <div className={`w-20 h-20 rounded-full mx-auto mb-6 flex items-center justify-center ${user.userType === 'vendor'
+              ? 'bg-gradient-to-r from-green-500 to-emerald-600'
               : 'bg-gradient-to-r from-blue-500 to-indigo-600'
-          }`}>
+            }`}>
             {user.userType === 'vendor' ? (
               <Store className="w-10 h-10 text-white" />
             ) : (
@@ -215,11 +214,10 @@ const AuthPage = () => {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4">
       <div className="bg-white rounded-2xl shadow-xl overflow-hidden w-full max-w-md">
         {/* Header */}
-        <div className={`p-8 text-center text-white ${
-          userType === 'vendor' 
-            ? 'bg-gradient-to-r from-green-500 to-emerald-600' 
+        <div className={`p-8 text-center text-white ${userType === 'vendor'
+            ? 'bg-gradient-to-r from-green-500 to-emerald-600'
             : 'bg-gradient-to-r from-blue-500 to-indigo-600'
-        }`}>
+          }`}>
           <div className="w-16 h-16 bg-white bg-opacity-20 rounded-full mx-auto mb-4 flex items-center justify-center">
             {userType === 'vendor' ? (
               <Store className="w-8 h-8" />
@@ -231,8 +229,8 @@ const AuthPage = () => {
             {isSignUp ? `Create ${userType === 'vendor' ? 'Vendor' : 'User'} Account` : 'Welcome Back'}
           </h1>
           <p className="text-blue-100">
-            {isSignUp 
-              ? `Sign up as a ${userType}` 
+            {isSignUp
+              ? `Sign up as a ${userType}`
               : `Sign in to your ${userType} account`
             }
           </p>
@@ -245,11 +243,10 @@ const AuthPage = () => {
             <button
               type="button"
               onClick={() => setUserType('user')}
-              className={`flex-1 flex items-center justify-center py-2 px-4 rounded-md transition duration-200 ${
-                userType === 'user'
+              className={`flex-1 flex items-center justify-center py-2 px-4 rounded-md transition duration-200 ${userType === 'user'
                   ? 'bg-white text-blue-600 shadow-sm'
                   : 'text-gray-600 hover:text-gray-800'
-              }`}
+                }`}
             >
               <Users className="w-4 h-4 mr-2" />
               User
@@ -257,11 +254,10 @@ const AuthPage = () => {
             <button
               type="button"
               onClick={() => setUserType('vendor')}
-              className={`flex-1 flex items-center justify-center py-2 px-4 rounded-md transition duration-200 ${
-                userType === 'vendor'
+              className={`flex-1 flex items-center justify-center py-2 px-4 rounded-md transition duration-200 ${userType === 'vendor'
                   ? 'bg-white text-green-600 shadow-sm'
                   : 'text-gray-600 hover:text-gray-800'
-              }`}
+                }`}
             >
               <Store className="w-4 h-4 mr-2" />
               Vendor
@@ -321,11 +317,10 @@ const AuthPage = () => {
             <button
               onClick={handleSubmit}
               disabled={loading}
-              className={`w-full font-semibold py-3 px-4 rounded-lg transition duration-200 disabled:opacity-50 disabled:cursor-not-allowed ${
-                userType === 'vendor'
+              className={`w-full font-semibold py-3 px-4 rounded-lg transition duration-200 disabled:opacity-50 disabled:cursor-not-allowed ${userType === 'vendor'
                   ? 'bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white'
                   : 'bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white'
-              }`}
+                }`}
             >
               {loading ? (
                 <div className="flex items-center justify-center">
@@ -369,9 +364,8 @@ const AuthPage = () => {
                   setIsSignUp(!isSignUp);
                   setFormData({ email: '', password: '', name: '' });
                 }}
-                className={`ml-2 font-semibold ${
-                  userType === 'vendor' ? 'text-green-600 hover:text-green-700' : 'text-blue-600 hover:text-blue-700'
-                }`}
+                className={`ml-2 font-semibold ${userType === 'vendor' ? 'text-green-600 hover:text-green-700' : 'text-blue-600 hover:text-blue-700'
+                  }`}
               >
                 {isSignUp ? 'Sign In' : 'Sign Up'}
               </button>

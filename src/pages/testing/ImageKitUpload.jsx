@@ -10,7 +10,7 @@ const ImageUploadForm = () => {
     const BACKEND_URL = 'https://api.staging.pelbliss.com/api/media/signature';
     const IMAGEKIT_URL = 'https://upload.imagekit.io/api/v1/files/upload';
     const IMAGEKIT_PUBLIC_KEY = 'public_gL4X6mYUYCt+PiGKlEigFHzmOHc=';
-    const BEARER_TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTUyNDllYzg0Yjc2MGZhM2ExMjZjYyIsInVzZXJJZCI6IjY4OTUyNDllYzg0Yjc2MGZhM2ExMjZjYyIsImVtYWlsIjoiY2xhc3NpY2ZlcmFubWkxMTIyMDAzQGdtYWlsLmNvbSIsInJvbGUiOiJ2ZW5kb3IiLCJpYXQiOjE3NTUyNjc3NTEsImV4cCI6MTc1NTM1NDE1MSwiYXVkIjoicGVsYmxpc3MtbWFya2V0cGxhY2UtY2xpZW50IiwiaXNzIjoicGVsYmxpc3MtbWFya2V0cGxhY2UifQ.Jw036hRZF5fVnF5DKTt9lvumIoNrbMg_4BVzudKQ8pM';
+    const BEARER_TOKEN = localStorage.getItem("authToken") || "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4YjU3NGY5N2RkN2E4ZTg2NDE3N2ZjNSIsInVzZXJJZCI6IjY4YjU3NGY5N2RkN2E4ZTg2NDE3N2ZjNSIsImVtYWlsIjoiY2xhc3NpY2ZlcmFubWkxMTIyMDAzQGdtYWlsLmNvbSIsInJvbGUiOiJ2ZW5kb3IiLCJpYXQiOjE3NTY4MDU4NTksImV4cCI6MTc1Njg5MjI1OSwiYXVkIjoicGVsYmxpc3MtbWFya2V0cGxhY2UtY2xpZW50IiwiaXNzIjoicGVsYmxpc3MtbWFya2V0cGxhY2UifQ.7FbOTVdljd1pRu7AyRB8BMVaOVrZVsDK2wnnXO-d1zc";
 
     const addLog = (message, type = 'info') => {
         const timestamp = new Date().toLocaleTimeString();
@@ -160,8 +160,8 @@ const ImageUploadForm = () => {
                     onClick={handleSubmit}
                     disabled={!selectedFile || uploading}
                     className={`w-full py-2 px-4 rounded-md text-white font-medium ${!selectedFile || uploading
-                            ? 'bg-gray-400 cursor-not-allowed'
-                            : 'bg-blue-600 hover:bg-blue-700'
+                        ? 'bg-gray-400 cursor-not-allowed'
+                        : 'bg-blue-600 hover:bg-blue-700'
                         }`}
                 >
                     {uploading ? 'Uploading...' : 'Upload Image'}
@@ -215,8 +215,8 @@ const ImageUploadForm = () => {
                             <div key={index} className="text-xs font-mono">
                                 <span className="text-gray-500">[{log.timestamp}]</span>
                                 <span className={`ml-2 ${log.type === 'error' ? 'text-red-600' :
-                                        log.type === 'success' ? 'text-green-600' :
-                                            'text-gray-700'
+                                    log.type === 'success' ? 'text-green-600' :
+                                        'text-gray-700'
                                     }`}>
                                     {log.message}
                                 </span>
