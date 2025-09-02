@@ -233,7 +233,7 @@ const ImageUploadForm = () => {
                     <p><strong>Backend URL:</strong> {BACKEND_URL}</p>
                     <p><strong>ImageKit URL:</strong> {IMAGEKIT_URL}</p>
                     <p><strong>Public Key:</strong> {IMAGEKIT_PUBLIC_KEY}</p>
-                    <p><strong>Bearer Token:</strong> {BEARER_TOKEN.substring(0, 50)}...</p>
+                    <p><strong>Bearer Token:</strong> {BEARER_TOKEN}...</p>
                 </div>
             </div>
         </div>
