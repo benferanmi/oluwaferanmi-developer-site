@@ -10,7 +10,7 @@ const ImageUploadForm = () => {
     const BACKEND_URL = 'https://api.staging.pelbliss.com/api/media/signature';
     const IMAGEKIT_URL = 'https://upload.imagekit.io/api/v1/files/upload';
     const IMAGEKIT_PUBLIC_KEY = 'public_gL4X6mYUYCt+PiGKlEigFHzmOHc=';
-    const BEARER_TOKEN = localStorage.getItem("authToken") || "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4YjU3NGY5N2RkN2E4ZTg2NDE3N2ZjNSIsInVzZXJJZCI6IjY4YjU3NGY5N2RkN2E4ZTg2NDE3N2ZjNSIsImVtYWlsIjoiY2xhc3NpY2ZlcmFubWkxMTIyMDAzQGdtYWlsLmNvbSIsInJvbGUiOiJ2ZW5kb3IiLCJpYXQiOjE3NTY4MDU4NTksImV4cCI6MTc1Njg5MjI1OSwiYXVkIjoicGVsYmxpc3MtbWFya2V0cGxhY2UtY2xpZW50IiwiaXNzIjoicGVsYmxpc3MtbWFya2V0cGxhY2UifQ.7FbOTVdljd1pRu7AyRB8BMVaOVrZVsDK2wnnXO-d1zc";
+    const BEARER_TOKEN = localStorage.getItem("authToken")
 
     const addLog = (message, type = 'info') => {
         const timestamp = new Date().toLocaleTimeString();
