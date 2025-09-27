@@ -8,9 +8,10 @@ import AuthPage from './pages/AuthPage.jsx'
 import Contact from './pages/Contact.jsx'
 import { Toaster } from 'react-hot-toast'
 import Header from './components/navigation/Header.jsx'
-import SubscriptionUpgrade from './pages/testing/SubscriptionUpgrade.jsx'
-import PaymentSuccess from './pages/testing/PaymentSuccess.jsx'
-import ImageKitUploadForm from './pages/testing/ImageKitUpload.jsx'
+import SubscriptionUpgrade from './pages/testing/pelbliss/SubscriptionUpgrade.jsx'
+import PaymentSuccess from './pages/testing/pelbliss/PaymentSuccess.jsx'
+import ImageKitUploadForm from './pages/testing/pelbliss/ImageKitUpload.jsx'
+import MealTimetable from './pages/MealTimetable.jsx'
 
 function App() {
 
@@ -35,6 +36,7 @@ function App() {
           <Route path='/upgrade' element={<SubscriptionUpgrade />} />
           <Route path='/payment-success' element={<PaymentSuccess />} />
           <Route path='/testing/imagekit-upload' element={<ImageKitUploadForm />} />
+          <Route path='/testing/meal-timetable' element={<MealTimetable />} />
           {/* <Route path="/offers" element={<Offers />} /> */}
         </Routes>
       </main>

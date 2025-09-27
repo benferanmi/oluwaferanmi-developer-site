@@ -7,9 +7,9 @@ const ImageUploadForm = () => {
     const [error, setError] = useState(null);
     const [logs, setLogs] = useState([]);
 
-    const BACKEND_URL = 'https://api.staging.pelbliss.com/api/media/signature';
+    const BACKEND_URL = 'https://api.pelbliss.com/api/media/signature';
     const IMAGEKIT_URL = 'https://upload.imagekit.io/api/v1/files/upload';
-    const IMAGEKIT_PUBLIC_KEY = 'public_gL4X6mYUYCt+PiGKlEigFHzmOHc=';
+    const IMAGEKIT_PUBLIC_KEY = 'public_3hFVpF99oaplbm/26x6o7sEaqTk=';
     const BEARER_TOKEN = localStorage.getItem("authToken")
 
     const addLog = (message, type = 'info') => {

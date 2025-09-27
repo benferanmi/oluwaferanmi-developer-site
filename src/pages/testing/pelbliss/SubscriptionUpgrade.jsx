@@ -6,19 +6,10 @@ const SubscriptionUpgrade = () => {
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
     const [billingCycle, setBillingCycle] = useState('monthly');
-    const [selectedPlan, setSelectedPlan] = useState('689518ec6dc50b29ea1a4eb9');
+    const [selectedPlan] = useState('689518ec6dc50b29ea1a4eb9');
 
     const baseUrl = 'http://localhost:5000/api';
 
-    // You can add more plans here if needed
-    const plans = [
-        {
-            id: '689518ec6dc50b29ea1a4eb9',
-            name: 'Premium Plan',
-            monthlyPrice: '₦5,000',
-            yearlyPrice: '₦50,000'
-        }
-    ];
 
     const handleUpgrade = async () => {
         setLoading(true);
@@ -132,7 +123,7 @@ const SubscriptionUpgrade = () => {
 
                     {/* Features */}
                     <div className="mb-8">
-                        <h3 className="text-lg font-semibold text-gray-800 mb-4">What you'll get:</h3>
+                        <h3 className="text-lg font-semibold text-gray-800 mb-4">What you&aps;ll get:</h3>
                         <div className="space-y-3">
                             <div className="flex items-center text-gray-700">
                                 <CheckCircle className="w-5 h-5 text-green-500 mr-3 flex-shrink-0" />
