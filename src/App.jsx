@@ -42,6 +42,7 @@ function App() {
       </main>
       <div className='footer_spacer'></div>
       <hr />
+      {/* //maybe */}
       <div>
         <Footer />
       </div>
