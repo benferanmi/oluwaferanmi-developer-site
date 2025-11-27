@@ -12,6 +12,7 @@ import SubscriptionUpgrade from './pages/testing/pelbliss/SubscriptionUpgrade.js
 import PaymentSuccess from './pages/testing/pelbliss/PaymentSuccess.jsx'
 import ImageKitUploadForm from './pages/testing/pelbliss/ImageKitUpload.jsx'
 import MealTimetable from './pages/MealTimetable.jsx'
+import SaveHavenWebhookTester from './pages/testing/billpadi/SaveHavenWebhookTester.jsx'
 
 function App() {
 
@@ -37,6 +38,7 @@ function App() {
           <Route path='/payment-success' element={<PaymentSuccess />} />
           <Route path='/testing/imagekit-upload' element={<ImageKitUploadForm />} />
           <Route path='/testing/meal-timetable' element={<MealTimetable />} />
+          <Route path="/testing/webhook" element={<SaveHavenWebhookTester />} />
           {/* <Route path="/offers" element={<Offers />} /> */}
         </Routes>
       </main>
