@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { Send, Copy, Check, AlertCircle, Info, RefreshCw } from 'lucide-react';
+import { useState } from 'react';
+import { Send, Copy, Check, AlertCircle, Info, RefreshCw, Lock, Unlock } from 'lucide-react';
 
 const SaveHavenWebhookTester = () => {
-  const [webhookUrl, setWebhookUrl] = useState('http://localhost:3000/api/webhooks/savehaven');
+  const [webhookUrl, setWebhookUrl] = useState('http://localhost:5000/api/v1/webhooks/savehaven');
   const [virtualAccount, setVirtualAccount] = useState('');
   const [withdrawalRef, setWithdrawalRef] = useState('');
   const [scenario, setScenario] = useState('inwards-success');
@@ -10,6 +10,17 @@ const SaveHavenWebhookTester = () => {
   const [response, setResponse] = useState(null);
   const [loading, setLoading] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [autoMode, setAutoMode] = useState(true);
+
+  // Critical fields that must match database
+  const [criticalFields, setCriticalFields] = useState({
+    virtualAccount: '',
+    withdrawalRef: '',
+    transactionId: '',
+    sessionId: '',
+    paymentReference: '',
+    nameEnquiryReference: '',
+  });
 
   // Customizable fields
   const [customFields, setCustomFields] = useState({
@@ -36,40 +47,69 @@ const SaveHavenWebhookTester = () => {
     { value: 'duplicate', label: '🔁 Duplicate Transaction (Same Provider ID)' },
     { value: 'invalid-account', label: '⚠️ Invalid Virtual Account' },
     { value: 'missing-ref', label: '⚠️ Missing Withdrawal Reference' },
-    { value: 'large-amount', label: '💰 Large Amount (₦10,000,000)' },
-    { value: 'minimal-amount', label: '💵 Minimal Amount (₦100)' },
+    { value: 'mismatched-id', label: '🔍 Mismatched Transaction ID' },
+    { value: 'large-amount', label: '💰 Large Amount (₦100,000)' },
+    { value: 'minimal-amount', label: '💵 Minimal Amount (₦1)' },
     { value: 'high-fees', label: '💸 High Fees Scenario' },
   ];
+
+  // Auto-fill helper when switching to manual mode
+  const handleModeToggle = () => {
+    if (autoMode) {
+      // Switching to manual - auto-fill some fields
+      setCriticalFields({
+        ...criticalFields,
+        virtualAccount: virtualAccount,
+        withdrawalRef: withdrawalRef,
+        paymentReference: criticalFields.paymentReference || withdrawalRef,
+        nameEnquiryReference: criticalFields.nameEnquiryReference || criticalFields.sessionId,
+      });
+    }
+    setAutoMode(!autoMode);
+  };
 
   const generatePayload = (scenarioValue, edgeCase = null) => {
     const selectedScenario = scenarios.find(s => s.value === scenarioValue);
     const timestamp = new Date().toISOString();
-    const txnId = `TXN_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
-    
+
+    // Use manual IDs if in manual mode, otherwise generate
+    let txnId = autoMode
+      ? `TRF_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
+      : criticalFields.transactionId;
+
+    let sessionId = autoMode
+      ? `SESS_${Date.now()}`
+      : criticalFields.sessionId;
+
+    let paymentReference = autoMode
+      ? `PAY_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
+      : criticalFields.paymentReference;
+
+    let nameEnquiryReference = autoMode
+      ? `NEQ_${Date.now()}`
+      : criticalFields.nameEnquiryReference;
+
     let amount = customFields.amount;
     let fees = customFields.fees;
     let vat = customFields.vat;
     let stampDuty = customFields.stampDuty;
-    let creditAccountNumber = virtualAccount;
+    let creditAccountNumber = criticalFields.virtualAccount || virtualAccount;
     let narration = customFields.narration;
-    let withdrawalReference = withdrawalRef;
+    let withdrawalReference = criticalFields.withdrawalRef || withdrawalRef;
 
     // Apply edge case modifications
-    if (edgeCase === 'duplicate') {
-      // Use a fixed transaction ID for duplicate testing
-      return generatePayload(scenarioValue, null);
-    } else if (edgeCase === 'invalid-account') {
-      creditAccountNumber = '9999999999'; // Non-existent account
+    if (edgeCase === 'invalid-account') {
+      creditAccountNumber = '9999999999';
     } else if (edgeCase === 'missing-ref') {
-      withdrawalReference = ''; // Missing reference
-      narration = 'Withdrawal'; // Generic narration without reference
+      withdrawalReference = '';
+      narration = 'Withdrawal';
     } else if (edgeCase === 'large-amount') {
-      amount = 10000000; // 10 million kobo = ₦100,000
+      amount = 10000000;
       fees = 1000;
       vat = 75;
       stampDuty = 50;
     } else if (edgeCase === 'minimal-amount') {
-      amount = 100; // ₦1
+      amount = 100;
       fees = 10;
       vat = 1;
       stampDuty = 0;
@@ -77,6 +117,8 @@ const SaveHavenWebhookTester = () => {
       fees = 500;
       vat = 38;
       stampDuty = 50;
+    } else if (edgeCase === 'mismatched-id') {
+      txnId = `TRF_NONEXISTENT_${Date.now()}`;
     }
 
     const netAmount = amount - fees - vat - stampDuty;
@@ -95,9 +137,9 @@ const SaveHavenWebhookTester = () => {
         client: "sandbox_client_id",
         account: "1234567890",
         type: selectedScenario.type,
-        sessionId: `SESS_${Date.now()}`,
-        nameEnquiryReference: `NEQ_${Date.now()}`,
-        paymentReference: `PAY_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
+        sessionId: sessionId,
+        nameEnquiryReference: nameEnquiryReference,
+        paymentReference: paymentReference,
         mandateReference: null,
         isReversed: selectedScenario.reversed || false,
         reversalReference: selectedScenario.reversed ? `REV_${Date.now()}` : null,
@@ -132,7 +174,9 @@ const SaveHavenWebhookTester = () => {
   };
 
   const sendWebhook = async (payload) => {
-    if (!virtualAccount.trim()) {
+    // Validation for virtual account
+    const virtualAcct = criticalFields.virtualAccount || virtualAccount;
+    if (!virtualAcct.trim()) {
       setResponse({
         error: true,
         message: 'Virtual Account Number is required. Please enter a valid account number from your database.'
@@ -140,13 +184,32 @@ const SaveHavenWebhookTester = () => {
       return;
     }
 
+    // Validation for withdrawal reference
     const selectedScenario = scenarios.find(s => s.value === scenario);
-    if (selectedScenario.type === 'Outwards' && !withdrawalRef.trim()) {
+    const withRef = criticalFields.withdrawalRef || withdrawalRef;
+    if (selectedScenario.type === 'Outwards' && !withRef.trim()) {
       setResponse({
         error: true,
         message: 'Withdrawal Reference is required for Outwards transactions. Please enter a valid reference (e.g., WTH_1234567890).'
       });
       return;
+    }
+
+    // Manual mode validation
+    if (!autoMode) {
+      const missing = [];
+      if (!criticalFields.transactionId) missing.push('Transaction ID');
+      if (!criticalFields.sessionId) missing.push('Session ID');
+      if (!criticalFields.paymentReference) missing.push('Payment Reference');
+      if (!criticalFields.nameEnquiryReference) missing.push('Name Enquiry Reference');
+
+      if (missing.length > 0) {
+        setResponse({
+          error: true,
+          message: `Manual Mode requires all critical fields. Missing: ${missing.join(', ')}`
+        });
+        return;
+      }
     }
 
     setLoading(true);
@@ -190,6 +253,9 @@ const SaveHavenWebhookTester = () => {
   const getExpectedDbChanges = () => {
     const selectedScenario = scenarios.find(s => s.value === scenario);
     const netAmount = customFields.amount - customFields.fees - customFields.vat - customFields.stampDuty;
+    const virtualAcct = criticalFields.virtualAccount || virtualAccount;
+    const withRef = criticalFields.withdrawalRef || withdrawalRef;
+    const txnId = criticalFields.transactionId || 'auto-generated';
 
     if (selectedScenario.type === 'Inwards') {
       return {
@@ -207,8 +273,10 @@ const SaveHavenWebhookTester = () => {
           status: selectedScenario.reversed ? 'reversed' : (selectedScenario.status === 'Completed' ? 'success' : 'failed'),
           balanceBefore: 'current_balance',
           balanceAfter: selectedScenario.status === 'Completed' && !selectedScenario.reversed ? 'current_balance + amount' : 'current_balance',
+          providerReference: txnId,
         },
         wallet: {
+          lookedUpBy: `Virtual Account: ${virtualAcct}`,
           updated: selectedScenario.status === 'Completed' && !selectedScenario.reversed,
           balanceChange: selectedScenario.status === 'Completed' && !selectedScenario.reversed ? `+₦${(netAmount / 100).toFixed(2)}` : '₦0.00',
         },
@@ -221,7 +289,9 @@ const SaveHavenWebhookTester = () => {
       // Outwards (Withdrawal)
       return {
         transaction: {
-          found: withdrawalRef ? true : false,
+          lookedUpBy: `Reference: ${withRef}`,
+          fallbackLookup: `providerReference: ${txnId}`,
+          found: withRef ? true : false,
           updated: true,
           status: selectedScenario.reversed ? 'reversed' : (selectedScenario.status === 'Completed' ? 'success' : 'failed'),
         },
@@ -232,9 +302,20 @@ const SaveHavenWebhookTester = () => {
         notification: {
           sent: true,
           type: selectedScenario.status === 'Completed' && !selectedScenario.reversed ? 'withdrawal_completed' : (selectedScenario.reversed ? 'withdrawal_reversed' : 'withdrawal_failed'),
+        },
+        idempotency: {
+          check: `providerReference: ${txnId}`,
+          action: 'Prevents duplicate processing',
         }
       };
     }
+  };
+
+  const getFieldStatus = (fieldName) => {
+    if (autoMode) return null;
+    const value = criticalFields[fieldName];
+    if (value && value.trim()) return '✅';
+    return '❌';
   };
 
   const currentPayload = generatePayload(scenario);
@@ -254,6 +335,30 @@ const SaveHavenWebhookTester = () => {
             </div>
           </div>
 
+          {/* Mode Toggle */}
+          <div className="mb-6 p-4 bg-white/5 rounded-lg border border-white/10">
+            <div className="flex items-center justify-between">
+              <div>
+                <h3 className="text-lg font-semibold text-white mb-1">ID Generation Mode</h3>
+                <p className="text-sm text-purple-200">
+                  {autoMode
+                    ? '🔓 AUTO MODE - IDs will be randomly generated (for new test scenarios)'
+                    : '🔒 MANUAL MODE - Using your exact IDs from database (for testing existing transactions)'}
+                </p>
+              </div>
+              <button
+                onClick={handleModeToggle}
+                className={`flex items-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all ${autoMode
+                    ? 'bg-green-500/20 border-2 border-green-500 text-green-300 hover:bg-green-500/30'
+                    : 'bg-orange-500/20 border-2 border-orange-500 text-orange-300 hover:bg-orange-500/30'
+                  }`}
+              >
+                {autoMode ? <Unlock className="w-5 h-5" /> : <Lock className="w-5 h-5" />}
+                {autoMode ? 'Switch to Manual' : 'Switch to Auto'}
+              </button>
+            </div>
+          </div>
+
           {/* Configuration Section */}
           <div className="grid grid-cols-1 gap-6 mb-6">
             {/* Webhook URL */}
@@ -270,34 +375,116 @@ const SaveHavenWebhookTester = () => {
               />
             </div>
 
-            {/* Required Fields */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                <label className="block text-sm font-medium text-purple-200 mb-2">
-                  Virtual Account Number * <span className="text-red-400">(Required)</span>
-                </label>
-                <input
-                  type="text"
-                  value={virtualAccount}
-                  onChange={(e) => setVirtualAccount(e.target.value)}
-                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-500"
-                  placeholder="e.g., 9012345678"
-                />
-                <p className="text-xs text-purple-300 mt-1">Use an account number from your database</p>
-              </div>
+            {/* Critical Fields Section */}
+            <div className="bg-blue-500/10 border-2 border-blue-500/30 rounded-lg p-6">
+              <h3 className="text-lg font-semibold text-blue-300 mb-4 flex items-center gap-2">
+                <Info className="w-5 h-5" />
+                Critical Fields (Must Match Your Database)
+              </h3>
 
-              <div>
-                <label className="block text-sm font-medium text-purple-200 mb-2">
-                  Withdrawal Reference * <span className="text-yellow-400">(Required for Outwards)</span>
-                </label>
-                <input
-                  type="text"
-                  value={withdrawalRef}
-                  onChange={(e) => setWithdrawalRef(e.target.value)}
-                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-500"
-                  placeholder="e.g., WTH_1234567890"
-                />
-                <p className="text-xs text-purple-300 mt-1">Existing transaction reference for withdrawal tests</p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {/* Virtual Account */}
+                <div>
+                  <label className="block text-sm font-medium text-purple-200 mb-2">
+                    {getFieldStatus('virtualAccount')} Virtual Account Number * <span className="text-red-400">(Required)</span>
+                  </label>
+                  <input
+                    type="text"
+                    value={autoMode ? virtualAccount : criticalFields.virtualAccount}
+                    onChange={(e) => {
+                      if (autoMode) {
+                        setVirtualAccount(e.target.value);
+                      } else {
+                        setCriticalFields({ ...criticalFields, virtualAccount: e.target.value });
+                      }
+                    }}
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                    placeholder="e.g., 9012345678"
+                  />
+                  <p className="text-xs text-purple-300 mt-1">The creditAccountNumber for wallet lookup</p>
+                </div>
+
+                {/* Withdrawal Reference */}
+                <div>
+                  <label className="block text-sm font-medium text-purple-200 mb-2">
+                    {getFieldStatus('withdrawalRef')} Withdrawal Reference * <span className="text-yellow-400">(Required for Outwards)</span>
+                  </label>
+                  <input
+                    type="text"
+                    value={autoMode ? withdrawalRef : criticalFields.withdrawalRef}
+                    onChange={(e) => {
+                      if (autoMode) {
+                        setWithdrawalRef(e.target.value);
+                      } else {
+                        setCriticalFields({ ...criticalFields, withdrawalRef: e.target.value });
+                      }
+                    }}
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                    placeholder="e.g., WTH-1764276421011-K1XZMM"
+                  />
+                  <p className="text-xs text-purple-300 mt-1">YOUR transaction reference (embedded in narration)</p>
+                </div>
+
+                {/* Transaction ID - Manual Mode Only */}
+                {!autoMode && (
+                  <>
+                    <div>
+                      <label className="block text-sm font-medium text-purple-200 mb-2">
+                        {getFieldStatus('transactionId')} SafeHaven Transaction ID (_id) *
+                      </label>
+                      <input
+                        type="text"
+                        value={criticalFields.transactionId}
+                        onChange={(e) => setCriticalFields({ ...criticalFields, transactionId: e.target.value })}
+                        className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                        placeholder="e.g., TRF_1764276422202_knke2hnq9"
+                      />
+                      <p className="text-xs text-purple-300 mt-1">The _id from SafeHaven's API response</p>
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-purple-200 mb-2">
+                        {getFieldStatus('sessionId')} Session ID *
+                      </label>
+                      <input
+                        type="text"
+                        value={criticalFields.sessionId}
+                        onChange={(e) => setCriticalFields({ ...criticalFields, sessionId: e.target.value })}
+                        className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                        placeholder="e.g., SESS_1764276422202"
+                      />
+                      <p className="text-xs text-purple-300 mt-1">From the Name Enquiry API response</p>
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-purple-200 mb-2">
+                        {getFieldStatus('paymentReference')} Payment Reference *
+                      </label>
+                      <input
+                        type="text"
+                        value={criticalFields.paymentReference}
+                        onChange={(e) => setCriticalFields({ ...criticalFields, paymentReference: e.target.value })}
+                        className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                        placeholder="e.g., WTH-1764276421011-K1XZMM"
+                      />
+                      <p className="text-xs text-purple-300 mt-1">YOUR transaction reference (usually same as Withdrawal Ref)</p>
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-purple-200 mb-2">
+                        {getFieldStatus('nameEnquiryReference')} Name Enquiry Reference *
+                      </label>
+                      <input
+                        type="text"
+                        value={criticalFields.nameEnquiryReference}
+                        onChange={(e) => setCriticalFields({ ...criticalFields, nameEnquiryReference: e.target.value })}
+                        className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                        placeholder="e.g., SESS_1764276422202"
+                      />
+                      <p className="text-xs text-purple-300 mt-1">Usually same as Session ID</p>
+                    </div>
+                  </>
+                )}
               </div>
             </div>
 
@@ -341,7 +528,7 @@ const SaveHavenWebhookTester = () => {
                   <input
                     type="number"
                     value={customFields.amount}
-                    onChange={(e) => setCustomFields({...customFields, amount: parseInt(e.target.value) || 0})}
+                    onChange={(e) => setCustomFields({ ...customFields, amount: parseInt(e.target.value) || 0 })}
                     className="w-full px-3 py-2 bg-white/10 border border-white/20 rounded text-white"
                   />
                   <p className="text-xs text-purple-300 mt-1">₦{(customFields.amount / 100).toFixed(2)}</p>
@@ -351,7 +538,7 @@ const SaveHavenWebhookTester = () => {
                   <input
                     type="number"
                     value={customFields.fees}
-                    onChange={(e) => setCustomFields({...customFields, fees: parseInt(e.target.value) || 0})}
+                    onChange={(e) => setCustomFields({ ...customFields, fees: parseInt(e.target.value) || 0 })}
                     className="w-full px-3 py-2 bg-white/10 border border-white/20 rounded text-white"
                   />
                 </div>
@@ -360,7 +547,7 @@ const SaveHavenWebhookTester = () => {
                   <input
                     type="number"
                     value={customFields.vat}
-                    onChange={(e) => setCustomFields({...customFields, vat: parseInt(e.target.value) || 0})}
+                    onChange={(e) => setCustomFields({ ...customFields, vat: parseInt(e.target.value) || 0 })}
                     className="w-full px-3 py-2 bg-white/10 border border-white/20 rounded text-white"
                   />
                 </div>
@@ -369,7 +556,7 @@ const SaveHavenWebhookTester = () => {
                   <input
                     type="number"
                     value={customFields.stampDuty}
-                    onChange={(e) => setCustomFields({...customFields, stampDuty: parseInt(e.target.value) || 0})}
+                    onChange={(e) => setCustomFields({ ...customFields, stampDuty: parseInt(e.target.value) || 0 })}
                     className="w-full px-3 py-2 bg-white/10 border border-white/20 rounded text-white"
                   />
                 </div>
@@ -378,7 +565,7 @@ const SaveHavenWebhookTester = () => {
                   <input
                     type="text"
                     value={customFields.debitAccountName}
-                    onChange={(e) => setCustomFields({...customFields, debitAccountName: e.target.value})}
+                    onChange={(e) => setCustomFields({ ...customFields, debitAccountName: e.target.value })}
                     className="w-full px-3 py-2 bg-white/10 border border-white/20 rounded text-white"
                   />
                 </div>
@@ -387,7 +574,7 @@ const SaveHavenWebhookTester = () => {
                   <input
                     type="text"
                     value={customFields.creditAccountName}
-                    onChange={(e) => setCustomFields({...customFields, creditAccountName: e.target.value})}
+                    onChange={(e) => setCustomFields({ ...customFields, creditAccountName: e.target.value })}
                     className="w-full px-3 py-2 bg-white/10 border border-white/20 rounded text-white"
                   />
                 </div>
@@ -396,7 +583,7 @@ const SaveHavenWebhookTester = () => {
                   <input
                     type="text"
                     value={customFields.debitAccountNumber}
-                    onChange={(e) => setCustomFields({...customFields, debitAccountNumber: e.target.value})}
+                    onChange={(e) => setCustomFields({ ...customFields, debitAccountNumber: e.target.value })}
                     className="w-full px-3 py-2 bg-white/10 border border-white/20 rounded text-white"
                   />
                 </div>
@@ -405,12 +592,12 @@ const SaveHavenWebhookTester = () => {
                   <input
                     type="text"
                     value={customFields.narration}
-                    onChange={(e) => setCustomFields({...customFields, narration: e.target.value})}
+                    onChange={(e) => setCustomFields({ ...customFields, narration: e.target.value })}
                     className="w-full px-3 py-2 bg-white/10 border border-white/20 rounded text-white"
                   />
                 </div>
               </div>
-              
+
               {/* Net Amount Display */}
               <div className="mt-4 p-4 bg-purple-500/20 rounded-lg">
                 <p className="text-sm text-purple-200">
@@ -429,20 +616,25 @@ const SaveHavenWebhookTester = () => {
                 <button
                   key={edge.value}
                   onClick={() => sendWebhook(generatePayload(scenario, edge.value))}
-                  disabled={loading || !virtualAccount.trim()}
+                  disabled={loading || !(criticalFields.virtualAccount || virtualAccount).trim()}
                   className="px-4 py-2 bg-orange-500/20 hover:bg-orange-500/30 border border-orange-500/50 text-orange-200 rounded-lg text-sm transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {edge.label}
                 </button>
               ))}
             </div>
+            {edgeCases.find(e => e.value === 'missing-ref') && (
+              <p className="text-xs text-yellow-300 mt-2">
+                ⚠️ Missing Reference: Tests what happens when webhook arrives but your DB has no matching transaction
+              </p>
+            )}
           </div>
 
           {/* Action Buttons */}
           <div className="flex gap-4">
             <button
               onClick={() => sendWebhook(currentPayload)}
-              disabled={loading || !virtualAccount.trim()}
+              disabled={loading || !(criticalFields.virtualAccount || virtualAccount).trim()}
               className="flex-1 flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-semibold rounded-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {loading ? (
@@ -513,14 +705,13 @@ const SaveHavenWebhookTester = () => {
                 {response.error ? 'Error' : 'Response'}
               </h2>
               {!response.error && (
-                <span className={`ml-auto px-3 py-1 rounded-full text-sm font-semibold ${
-                  response.status === 200 ? 'bg-green-500/20 text-green-300' : 'bg-red-500/20 text-red-300'
-                }`}>
+                <span className={`ml-auto px-3 py-1 rounded-full text-sm font-semibold ${response.status === 200 ? 'bg-green-500/20 text-green-300' : 'bg-red-500/20 text-red-300'
+                  }`}>
                   {response.status} {response.statusText}
                 </span>
               )}
             </div>
-            
+
             {response.error ? (
               <div className="bg-red-500/10 border border-red-500/30 rounded-lg p-4">
                 <p className="text-red-300">{response.message}</p>
@@ -545,14 +736,25 @@ const SaveHavenWebhookTester = () => {
           <h2 className="text-xl font-bold text-white mb-4">Testing Guide</h2>
           <div className="space-y-4 text-purple-200">
             <div>
-              <h3 className="font-semibold text-white mb-2">📋 Before Testing:</h3>
-              <ul className="list-disc list-inside space-y-1 text-sm">
-                <li>Enter a valid Virtual Account Number from your database</li>
-                <li>For Outwards tests, enter an existing Withdrawal Reference (e.g., WTH_1234567890)</li>
-                <li>Ensure your webhook endpoint is accessible</li>
-              </ul>
+              <h3 className="font-semibold text-white mb-2">📋 How to Test Against Existing Transactions:</h3>
+              <ol className="list-decimal list-inside space-y-1 text-sm ml-4">
+                <li>Create a transaction using your API (withdrawal, bank transfer, etc.)</li>
+                <li>Note down these values from the response:
+                  <ul className="list-disc list-inside ml-6 mt-1">
+                    <li>Virtual Account Number</li>
+                    <li>Your transaction reference (WTH-...)</li>
+                    <li>SafeHaven's _id (TRF-...)</li>
+                    <li>Session ID (SESS-...)</li>
+                  </ul>
+                </li>
+                <li>Switch to <strong>MANUAL MODE</strong> in the tester</li>
+                <li>Fill in all the noted values in the Critical Fields section</li>
+                <li>Select the appropriate scenario (Outwards Success, Outwards Failed, etc.)</li>
+                <li>Send the webhook</li>
+                <li>Verify the transaction in your DB is updated correctly</li>
+              </ol>
             </div>
-            
+
             <div>
               <h3 className="font-semibold text-white mb-2">🎯 Transaction Types:</h3>
               <ul className="list-disc list-inside space-y-1 text-sm">
@@ -580,7 +782,16 @@ const SaveHavenWebhookTester = () => {
                 <li><strong>Duplicate:</strong> Same providerTransactionId sent twice</li>
                 <li><strong>Invalid Account:</strong> Non-existent virtual account number</li>
                 <li><strong>Missing Reference:</strong> Outwards without withdrawal reference</li>
+                <li><strong>Mismatched ID:</strong> Transaction ID not in your database</li>
                 <li><strong>Large/Minimal Amounts:</strong> Test fee calculations</li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="font-semibold text-white mb-2">🔑 Key Differences Between Modes:</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li><strong>AUTO MODE:</strong> Good for testing brand new scenarios where no DB records exist. All IDs are randomly generated.</li>
+                <li><strong>MANUAL MODE:</strong> Good for testing against existing transaction records. You provide all IDs that must match your database.</li>
               </ul>
             </div>
           </div>
