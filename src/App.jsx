@@ -8,12 +8,15 @@ import AuthPage from './pages/AuthPage.jsx'
 import Contact from './pages/Contact.jsx'
 import { Toaster } from 'react-hot-toast'
 import Header from './components/navigation/Header.jsx'
-import SubscriptionUpgrade from './pages/testing/pelbliss/SubscriptionUpgrade.jsx'
+import SubscriptionUpgrade from './pages/testing/pelbliss/ArchitectureDiagram.jsx'
 import PaymentSuccess from './pages/testing/pelbliss/PaymentSuccess.jsx'
 import ImageKitUploadForm from './pages/testing/pelbliss/ImageKitUpload.jsx'
 import MealTimetable from './pages/MealTimetable.jsx'
 import SaveHavenWebhookTester from './pages/testing/billpadi/SaveHavenWebhookTester.jsx'
-
+import FlutterwaveCardTester from './pages/testing/billpadi/FlutterwaveCardTester.jsx'
+import SkillsShowcase from './components/reuseable/SkillsShowcase.jsx'
+import { skillArray } from './data/SkillData.jsx'
+import ArchitectureDiagram from './pages/testing/pelbliss/ArchitectureDiagram.jsx'
 function App() {
 
   return (
@@ -29,6 +32,7 @@ function App() {
           <Route path='/contact' element={<Contact />} />
           {/* <Route path='/blogs' element={<Blog />} /> */}
           <Route path='/prev' element={<Portfolio />} />
+          <Route path='/skills' element={<SkillsShowcase skillLength={skillArray.length} />} />
 
           {/* //testing pages */}
           <Route path='/google-form' element={<AuthPage />} />
@@ -39,6 +43,8 @@ function App() {
           <Route path='/testing/imagekit-upload' element={<ImageKitUploadForm />} />
           <Route path='/testing/meal-timetable' element={<MealTimetable />} />
           <Route path="/testing/webhook" element={<SaveHavenWebhookTester />} />
+          <Route path="/testing/card" element={<FlutterwaveCardTester />} />
+          <Route path="/testing/art" element={<ArchitectureDiagram />} />
           {/* <Route path="/offers" element={<Offers />} /> */}
         </Routes>
       </main>

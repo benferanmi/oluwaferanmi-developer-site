@@ -2,25 +2,8 @@
 import React, { useState, useEffect } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Code, Database, Globe, Wrench } from 'lucide-react';
+import { skillArray } from '../../data/SkillData';
 
-const skillArray = [
-  { id: 1, name: 'HTML', percentage: 100, category: 'frontend' },
-  { id: 2, name: 'CSS', percentage: 100, category: 'frontend' },
-  { id: 3, name: 'React (JavaScript)', percentage: 100, category: 'frontend' },
-  { id: 4, name: 'Next.js (JavaScript)', percentage: 100, category: 'frontend' },
-  { id: 5, name: 'Node.js (JavaScript)', percentage: 90, category: 'backend' },
-  { id: 6, name: 'Express.js (JavaScript)', percentage: 90, category: 'backend' },
-  { id: 7, name: 'GIT', percentage: 100, category: 'tools' },
-  { id: 8, name: 'Php', percentage: 100, category: 'backend' },
-  { id: 9, name: 'MySQLi', percentage: 100, category: 'database' },
-  { id: 10, name: 'MongoDb', percentage: 90, category: 'database' },
-  { id: 11, name: 'WordPress (CMS)', percentage: 100, category: 'cms' },
-  { id: 12, name: 'Webflow', percentage: 100, category: 'cms' },
-  { id: 16, name: 'Bubble.io', percentage: 100, category: 'cms' },
-  { id: 13, name: 'GoDaddy', percentage: 100, category: 'tools' },
-  { id: 14, name: 'Redux', percentage: 100, category: 'frontend' },
-  { id: 15, name: 'Elementor Page Builder', percentage: 100, category: 'cms' },
-];
 
 // eslint-disable-next-line react/prop-types
 const SkillCard = ({ skill, index }) => {
@@ -145,7 +128,7 @@ const SkillCard = ({ skill, index }) => {
   );
 };
 
-export default function SkillsShowcase() {
+export default function SkillsShowcase({ skillLength }) {
   return (
     <div className="min-h-screen bg-inherit" >
       {/* Header section */}
@@ -182,14 +165,14 @@ export default function SkillsShowcase() {
       {/* Skills grid */}
       <div className="w-[95%] md:max-w-7xl mx-auto px-4 pb-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 w-full overflow-hidden">
-          {skillArray.map((skill, index) => (
+          {skillArray.slice(0, skillLength).map((skill, index) => (
             <SkillCard key={skill.id} skill={skill} index={index} />
           ))}
         </div>
       </div>
 
       {/* Footer stats */}
-      <motion.div
+      {/* <motion.div
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
@@ -216,7 +199,7 @@ export default function SkillsShowcase() {
             </div>
           </div>
         </div>
-      </motion.div>
+      </motion.div> */}
     </div>
   );
 }

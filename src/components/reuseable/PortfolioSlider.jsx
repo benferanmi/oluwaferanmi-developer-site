@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink, ChevronLeft, ChevronRight, Code, Palette } from 'lucide-react';
-import { bry, everything, kikxbet, vipsport } from '../../assets';
+import { bry, everything, kikxbet, vipsport, marketplaceArchitecture, aiVideoArchitecture, fintechArchitecture, telegramArchitecture } from '../../assets';
 
 const PortfolioSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -9,6 +9,28 @@ const PortfolioSlider = () => {
 
   // Featured projects for homepage slider
   const featuredProjects = [
+    {
+      id: 20,
+      imgUrl: marketplaceArchitecture,
+      siteLink: null,
+      docsLink: 'https://api.marketplace.com/docs',
+      repoLink: 'https://github.com/username/marketplace-backend',
+      siteName: 'Multi-Vendor Marketplace Backend',
+      siteDescription: 'Scalable backend system powering vendor onboarding, subscriptions, listings, and payments with client and admin APIs.',
+      siteCategory: 'Backend Systems',
+      type: 'backend',
+      tech: [
+        'Node.js',
+        'TypeScript',
+        'Express',
+        'MongoDB',
+        'Redis',
+        'OAuth',
+        'Paystack',
+        'Flutterwave'
+      ],
+      gradient: 'from-slate-700 to-slate-900'
+    },
     {
       id: 12,
       imgUrl: kikxbet,
@@ -20,6 +42,67 @@ const PortfolioSlider = () => {
       tech: ['Next.js', 'React', 'TypeScript', 'Node.js'],
       gradient: 'from-purple-600 to-blue-600'
     },
+    {
+      id: 21,
+      imgUrl: fintechArchitecture,
+      siteLink: null,
+      docsLink: 'https://api.fintech.com/docs',
+      repoLink: 'https://github.com/username/fintech-wallet-api',
+      siteName: 'Fintech Wallet & Bill Payment API',
+      siteDescription: 'Production-grade fintech backend supporting wallets, bill payments, referrals, commissions, gift cards, crypto trading, and multi-provider integrations.',
+      siteCategory: 'Fintech Infrastructure',
+      type: 'backend',
+      tech: [
+        'Node.js',
+        'NestJS',
+        'MongoDB',
+        'Redis',
+        'Firebase',
+        'Flutterwave',
+        'VTpass',
+        'Reloadly',
+        'SafeHaven'
+      ],
+      gradient: 'from-emerald-700 to-cyan-800'
+    },
+    {
+      id: 22,
+      imgUrl: telegramArchitecture,
+      siteLink: null,
+      docsLink: 'https://api.telegramgame.com/docs',
+      repoLink: 'https://github.com/username/telegram-miniapp-backend',
+      siteName: 'Telegram Mini App Gaming Backend',
+      siteDescription: 'Backend system for Telegram Mini Apps featuring authentication, user tracking, gamification logic, rewards, and admin analytics.',
+      siteCategory: 'Gaming & Engagement',
+      type: 'backend',
+      tech: [
+        'Node.js',
+        'TypeScript',
+        'Redis',
+        'Telegram API'
+      ],
+      gradient: 'from-indigo-700 to-violet-800'
+    }
+    , {
+      id: 23,
+      imgUrl: aiVideoArchitecture,
+      siteLink: null,
+      docsLink: 'https://api.santavideo.com/docs',
+      repoLink: 'https://github.com/username/ai-video-backend',
+      siteName: 'AI Video Generation Backend',
+      siteDescription: 'AI-powered backend platform handling authenticated purchases, video processing, AI embeddings, and media delivery pipelines.',
+      siteCategory: 'AI & Media Systems',
+      type: 'backend',
+      tech: [
+        'Node.js',
+        'TypeScript',
+        'Stripe',
+        'AI Embeddings',
+        'Video Processing'
+      ],
+      gradient: 'from-red-700 to-rose-900'
+    }
+    ,
     {
       id: 5,
       imgUrl: vipsport,
@@ -82,7 +165,7 @@ const PortfolioSlider = () => {
 
   return (
     <div className="relative w-full my-5 py-5 min-h-[800px] h-fit overflow-hidden rounded-3xl bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-      
+
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.1),transparent_50%)]" />
@@ -124,7 +207,7 @@ const PortfolioSlider = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5, duration: 0.6 }}
-                className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight"
+                className="text-3xl md:text-4xl lg:text-6xl font-bold text-white leading-tight"
               >
                 {currentProject.siteName}
               </motion.h1>
@@ -134,7 +217,7 @@ const PortfolioSlider = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6, duration: 0.6 }}
-                className="text-slate-300 text-lg leading-relaxed max-w-lg"
+                className="text-slate-300 text-md leading-relaxed max-w-lg"
               >
                 {currentProject.siteDescription}
               </motion.p>
@@ -160,24 +243,28 @@ const PortfolioSlider = () => {
               </motion.div>
 
               {/* CTA Button */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.9, duration: 0.6 }}
-                className="pt-4"
-              >
-                <motion.a
-                  href={currentProject.siteLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r ${currentProject.gradient} text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300`}
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  whileTap={{ scale: 0.98 }}
+
+              {currentProject.type !== "backend" && (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.9, duration: 0.6 }}
+                  className="pt-4"
                 >
-                  <ExternalLink size={20} />
-                  View Live Project
-                </motion.a>
-              </motion.div>
+                  <motion.a
+                    href={currentProject.siteLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r ${currentProject.gradient} text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300`}
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    <ExternalLink size={20} />
+                    View Live Project
+                  </motion.a>
+                </motion.div>
+              )}
+
             </motion.div>
 
             {/* Image Side */}
@@ -239,7 +326,7 @@ const PortfolioSlider = () => {
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex items-center gap-6 py-10">
         {/* Prev/Next Buttons */}
         <button
-        aria-label="Previous Slide"
+          aria-label="Previous Slide"
           onClick={prevSlide}
           className="p-3 bg-slate-800/50 backdrop-blur-sm border border-slate-600/50 text-white rounded-full hover:bg-slate-700/50 transition-all duration-300"
           onMouseEnter={() => setIsAutoPlay(false)}
@@ -252,7 +339,7 @@ const PortfolioSlider = () => {
         <div className="flex gap-2">
           {featuredProjects.map((_, index) => (
             <button
-            aria-label="Go to Slide"
+              aria-label="Go to Slide"
               key={index}
               onClick={() => goToSlide(index)}
               className={`w-3 m-5 md:m-10 h-3 rounded-full transition-all duration-300 ${index === currentIndex

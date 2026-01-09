@@ -1,8 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useState, useRef, useEffect } from 'react';
 import { Menu, X, Home, Briefcase, Mail } from 'lucide-react';
-import { LogoSvg } from './Logo';
-
+import { logo } from '../../assets';
 // Navigation Links Component
 const Navigation = ({ isVisible, onLinkClick }) => {
     const navItems = [
@@ -104,7 +103,7 @@ const Header = () => {
                             {/* Logo */}
                             <div className="flex-shrink-0 transform hover:scale-105 transition-transform duration-200">
                                 <a href="/" aria-label='Benferanmi logo image' className="flex items-center space-x-2 w-35">
-                                    <LogoSvg />
+                                    <img src={logo} alt='fow logo' aria-description='Force Of Will' />
                                 </a>
                             </div>
 
@@ -139,7 +138,7 @@ const Header = () => {
                 <div className="lg:hidden flex items-center justify-between h-20 px-6">
                     <div className="flex-shrink-0">
                         <a href="/" className="flex items-center space-x-2 w-30">
-                            <LogoSvg />
+                            <img src={logo} alt='fow logo' aria-description='Force Of Will' />
                         </a>
                     </div>
                 </div>
